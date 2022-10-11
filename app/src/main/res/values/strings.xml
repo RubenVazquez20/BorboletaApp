@@ -45,6 +45,10 @@
     <string name="register">Registrate</string>
     <string name="next">Continua</string>
 
+    <!--FilterActivity -->
+    <string name="subtitle1">Let’s get know each other</string>
+    <string name="subtitle2">Choose whatever topic you’re interested in</string>
+
     <!-- opciones de sppiner para día-->
     <string-array name="daysRegistration">
         <item>01</item>
