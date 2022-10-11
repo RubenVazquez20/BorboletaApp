@@ -354,7 +354,7 @@
         app:layout_constraintVertical_bias="0.929">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/signUpButton"
+            android:id="@+id/registerButton"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:background="@drawable/ic_buttom"

@@ -16,14 +16,17 @@
         android:theme="@style/Theme.Main"
         tools:targetApi="31">
         <activity
+            android:name=".FilterActivity"
+            android:exported="false" />
+        <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".DeleteAccountActivity" />
         <activity android:name=".UpdatePasswordActivity" />
         <activity android:name=".CheckEmailActivity" />

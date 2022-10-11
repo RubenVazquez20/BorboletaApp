@@ -43,6 +43,7 @@
     <string name="pronounRegistration">Pronombre</string>
     <string name="uploadImageRegistration">Sube una foto de perfil :)</string>
     <string name="register">Registrate</string>
+    <string name="next">Continua</string>
 
     <!-- opciones de sppiner para día-->
     <string-array name="daysRegistration">

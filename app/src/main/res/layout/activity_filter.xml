@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FilterActivity">
+
+    <!-- Edificios img-->
+    <LinearLayout
+        android:id="@+id/buildings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/edificios"
+            android:layout_width="415dp"
+            android:layout_height="240dp"
+            android:contentDescription="@string/all"
+            android:paddingTop="0dp"
+            app:srcCompat="@drawable/edificios"
+            tools:ignore="VectorDrawableCompat" />
+
+    </LinearLayout>
+
+    !-- Logo Mariposa de Borboleta-->
+    <LinearLayout
+        android:id="@+id/butterflyContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/butterfly"
+            android:layout_width="190dp"
+            android:layout_height="100dp"
+            android:contentDescription="@string/all"
+            app:srcCompat="@drawable/first"
+            tools:ignore="VectorDrawableCompat" />
+    </LinearLayout>
+
+    <!-- Filtros ************************************-->
+    <LinearLayout
+        android:id="@+id/linearLayoutButtonsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/butterflyContainer"
+        app:layout_constraintVertical_bias="0.1">
+
+        <!-- Primer fila de 3 elecciones -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn1"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_buttom"
+                android:paddingLeft="64dp"
+                android:paddingRight="64dp"
+                android:text="@string/next"
+                android:textColor="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn2"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_buttom"
+                android:paddingLeft="64dp"
+                android:paddingRight="64dp"
+                android:text="@string/next"
+                android:textColor="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn3"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_buttom"
+                android:paddingLeft="64dp"
+                android:paddingRight="64dp"
+                android:text="@string/next"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <!-- Segunda fila de 2 elecciones -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn4"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_buttom"
+                android:paddingLeft="64dp"
+                android:paddingRight="64dp"
+                android:text="@string/next"
+                android:textColor="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn5"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_buttom"
+                android:paddingLeft="64dp"
+                android:paddingRight="64dp"
+                android:text="@string/next"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <!-- tercera fila de 3 elecciones -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn6"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_buttom"
+                android:paddingLeft="64dp"
+                android:paddingRight="64dp"
+                android:text="@string/next"
+                android:textColor="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn7"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_buttom"
+                android:paddingLeft="64dp"
+                android:paddingRight="64dp"
+                android:text="@string/next"
+                android:textColor="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn8"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_buttom"
+                android:paddingLeft="64dp"
+                android:paddingRight="64dp"
+                android:text="@string/next"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <!-- cuarta fila de 2 elecciones -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn9"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_buttom"
+                android:paddingLeft="64dp"
+                android:paddingRight="64dp"
+                android:text="@string/next"
+                android:textColor="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn10"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_buttom"
+                android:paddingLeft="64dp"
+                android:paddingRight="64dp"
+                android:text="@string/next"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+
+    </LinearLayout> <!--Antes t0d0 esto era terreno -->
+
+
+    <!-- Botón de continuar -->
+    <LinearLayout
+        android:id="@+id/linearLayoutb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/butterflyContainer"
+        app:layout_constraintVertical_bias="0.943">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/registerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_buttom"
+            android:paddingLeft="64dp"
+            android:paddingRight="64dp"
+            android:text="@string/next"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
