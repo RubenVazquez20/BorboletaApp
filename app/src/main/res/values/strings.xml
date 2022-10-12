@@ -44,6 +44,7 @@
     <string name="uploadImageRegistration">Sube una foto de perfil :)</string>
     <string name="register">Registrate</string>
     <string name="next">Continua</string>
+    <string name="filtro1">Filtro#1</string>
 
     <!--FilterActivity -->
     <string name="subtitle1">Let’s get know each other</string>
