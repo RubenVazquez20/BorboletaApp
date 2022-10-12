@@ -35,6 +35,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
+        android:elevation="6dp"
+        android:outlineAmbientShadowColor="#000"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -201,7 +203,7 @@
             tools:ignore="VectorDrawableCompat" />
 
         <ImageView
-            android:id="@+id/google"
+            android:id="@+id/imgGoogle"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginStart="12dp"

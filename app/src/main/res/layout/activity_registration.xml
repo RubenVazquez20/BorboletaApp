@@ -51,9 +51,7 @@
             android:contentDescription="@string/all"
             app:srcCompat="@drawable/signinimg"
             tools:ignore="VectorDrawableCompat" />
-
     </LinearLayout>
-
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -335,6 +333,8 @@
             android:contentDescription="@string/all"
             app:srcCompat="@drawable/loadimage"
             tools:ignore="VectorDrawableCompat" />
+
+
     </LinearLayout>
 
     <LinearLayout

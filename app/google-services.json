@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "542425681283",
+    "firebase_url": "https://borboletaapp-7ba35-default-rtdb.firebaseio.com",
     "project_id": "borboletaapp-7ba35",
     "storage_bucket": "borboletaapp-7ba35.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "542425681283-prss2e1f29muobs7a5dtso17tggcprgg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.borboletaapp4",
+            "certificate_hash": "4993f6c3d1438af65db18f79fcd8e92692812e34"
+          }
+        },
         {
           "client_id": "542425681283-5cpcdo79u51i9brnft3m49b3sematcrc.apps.googleusercontent.com",
           "client_type": 3

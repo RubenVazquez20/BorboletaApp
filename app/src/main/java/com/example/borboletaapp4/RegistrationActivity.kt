@@ -6,9 +6,8 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.Toast
-import com.example.borboletaapp4.databinding.ActivityRegistrationBinding
 import androidx.appcompat.app.AppCompatActivity
+import com.example.borboletaapp4.databinding.ActivityRegistrationBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -19,8 +18,8 @@ class RegistrationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegistrationBinding
 
     val daysRegistration = arrayOf("DD","01","02","03","04","05","06","07","08","09","10","11","12","13",
-                                   "14","15","16","17","18","19","20","21","22","23","24","25","26",
-                                   "27","28","29","30","31")
+        "14","15","16","17","18","19","20","21","22","23","24","25","26",
+        "27","28","29","30","31")
 
     val monthsRegistration = arrayOf("MM","Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto",
         "Septiembre","Octubre","Noviembre","Diciembre")
