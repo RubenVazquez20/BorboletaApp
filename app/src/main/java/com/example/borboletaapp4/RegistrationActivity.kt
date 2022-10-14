@@ -27,10 +27,13 @@ class RegistrationActivity : AppCompatActivity() {
     val yearsRegistration = arrayOf("AAAA","1990","1991","1992","1993","1994","1995","1996","1997","1998",
         "1999","2000")
 
+    val genderRegistration = arrayOf("Género","Hombre", "Mujer", "Otro")
+
+    val pronounRegistration = arrayOf("Pronombre","El", "Ella", "Elle")
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityRegistrationBinding.inflate(layoutInflater)
         setContentView(binding.root)
         auth = Firebase.auth
@@ -61,6 +64,28 @@ class RegistrationActivity : AppCompatActivity() {
         val arrayAdapter3 = ArrayAdapter<String>(this,R.layout.style_spinner,yearsRegistration)
         spinner3.adapter = arrayAdapter3
         spinner3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                //Toast.makeText(applicationContext, "selected day is = "+yearsRegistration[p2], Toast.LENGTH_SHORT).show()
+            }
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+            }
+        }
+
+        val gender= findViewById<Spinner>(R.id.gender)
+        val arrayAdapter4 = ArrayAdapter<String>(this,R.layout.style_spinner,genderRegistration)
+        gender.adapter = arrayAdapter4
+        gender.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                //Toast.makeText(applicationContext, "selected day is = "+yearsRegistration[p2], Toast.LENGTH_SHORT).show()
+            }
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+            }
+        }
+
+        val pronoun= findViewById<Spinner>(R.id.pronoun)
+        val arrayAdapter5 = ArrayAdapter<String>(this,R.layout.style_spinner, pronounRegistration)
+        pronoun.adapter = arrayAdapter5
+        pronoun.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 //Toast.makeText(applicationContext, "selected day is = "+yearsRegistration[p2], Toast.LENGTH_SHORT).show()
             }

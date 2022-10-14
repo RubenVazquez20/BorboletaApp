@@ -1,14 +1,23 @@
 package com.example.borboletaapp4
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.borboletaapp4.databinding.ActivitySignInBinding
+import com.facebook.AccessToken
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
@@ -19,23 +28,28 @@ class SignInActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth //Autenticación normal
     private lateinit var mAuth: FirebaseAuth //Autenticación con google
 
-    private lateinit var binding: ActivitySignInBinding //normal
+    private lateinit var binding: ActivitySignInBinding //normal y google
     private val Google_SIGN_IN = 100
-    //private lateinit var abinding : ActivitySignInBinding //google
+
+    //callback de facebook
+    var callbackManager = CallbackManager.Factory.create()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignInBinding.inflate(layoutInflater) //google
-        binding = ActivitySignInBinding.inflate(layoutInflater) //normal
         setContentView(binding.root)
         //setContentView(abinding.root) //confirmacion con google
-        auth = Firebase.auth
+        //auth = Firebase.auth
 
         //Inicializar
-        mAuth = FirebaseAuth.getInstance()
+        auth = FirebaseAuth.getInstance() //checar si dejar como mAuth o auth
 
         //Función Botones
         boton()
+
+        //variables logueo de facebook
+        var TAG=""
+        var facebook = findViewById<ImageView>(R.id.facebook)
 
         binding.signInAppCompatButton.setOnClickListener {
             val mEmail = binding.emailEditText.text.toString()
@@ -61,6 +75,36 @@ class SignInActivity : AppCompatActivity() {
             val intent = Intent(this, AccountRecoveryActivity::class.java)
             this.startActivity(intent)
         }
+
+        //Funciones de login con facebook
+        facebook.setOnClickListener {
+
+            if(userLoggedIn()){
+                Firebase.auth.signOut()
+            }
+            else {
+                LoginManager.getInstance().logInWithReadPermissions(this, listOf("public_profile","email"))
+            }
+        }
+        LoginManager.getInstance().registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
+            override fun onSuccess(result: LoginResult) {
+                Log.d(TAG, "facebook:onSuccess:$result")
+                handleFacebookAccessToken(result.accessToken)
+            }
+
+            override fun onCancel() {
+                Log.d(TAG, "facebook:onCancel")
+            }
+
+            override fun onError(error: FacebookException) {
+                Log.d(TAG, "facebook:onError", error)
+            }
+        })
+
+    }
+
+    private fun userLoggedIn(): Boolean {
+        return auth.currentUser!=null && AccessToken.getCurrentAccessToken()!!.isExpired
     }
 
     public override fun onStart() {
@@ -111,6 +155,8 @@ class SignInActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        //super.onActivityResult(requestCode, resultCode, data)
+        callbackManager.onActivityResult(requestCode, resultCode, data)
         if(requestCode == Google_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
@@ -130,12 +176,12 @@ class SignInActivity : AppCompatActivity() {
 
     private fun firebaseAuthWithGoogle(idToken: String){
         val credential = GoogleAuthProvider.getCredential(idToken, null)
-        mAuth.signInWithCredential(credential)
+        auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     //Sig in success, update UI with the signed-in user's information
                     Log.d("Tag", "sigInWithCredential:success")
-                    val user = mAuth.currentUser?.email.toString()
+                    val user = auth.currentUser?.email.toString()
                     login(user)
                 }else{
                     //if sign in fails, display a message to the user
@@ -144,5 +190,35 @@ class SignInActivity : AppCompatActivity() {
                 }
             }
     }
+
+    /* ...
+    fun onActivityResult2(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        // Pass the activity result back to the Facebook SDK
+        //callbackManager.onActivityResult(requestCode, resultCode, data)
+    }
+*/
+    private fun handleFacebookAccessToken(token: AccessToken) {
+        Log.d(TAG, "handleFacebookAccessToken:$token")
+
+        val credential = FacebookAuthProvider.getCredential(token.token)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d(TAG, "signInWithCredential:success")
+                    val user = auth.currentUser
+                    startActivity(Intent(this,RegistrationActivity::class.java))
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.w(TAG, "signInWithCredential:failure", task.exception)
+                    Toast.makeText(baseContext, "Authentication failed.",
+                        Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+
+
 
 }

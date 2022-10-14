@@ -58,4 +58,12 @@
         <item>04</item>
         <item>05</item>
     </string-array>
+
+    <!-- variables para logueo de facebook-->
+
+    <string name="facebook_app_id">649907890038734</string>
+    <string name="fb_login_protocol_scheme">fb649907890038734</string>
+    <string name="facebook_client_token">05682a50d28db586f27e565b0cbc6fee</string>
+
+
 </resources>
