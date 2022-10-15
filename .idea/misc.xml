@@ -19,8 +19,10 @@
         <entry key="app/src/main/res/drawable/ic_user.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/splash_background.xml" value="0.1235" />
         <entry key="app/src/main/res/drawable/style_spinner.xml" value="0.1405" />
+        <entry key="app/src/main/res/layout/activity_account_recovery.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_card.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_check_email.xml" value="0.14369900271985495" />
+        <entry key="app/src/main/res/layout/activity_configuration.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_filter.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1875" />

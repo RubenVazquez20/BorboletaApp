@@ -1,21 +1,27 @@
 package com.example.borboletaapp4
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.borboletaapp4.databinding.ActivityRegistrationBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.util.*
+
 
 class RegistrationActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityRegistrationBinding
+    lateinit var datePickerDialog: DatePickerDialog
 
     val daysRegistration = arrayOf("DD","01","02","03","04","05","06","07","08","09","10","11","12","13",
         "14","15","16","17","18","19","20","21","22","23","24","25","26",
@@ -95,10 +101,126 @@ class RegistrationActivity : AppCompatActivity() {
 
         //Agregar direccionamiento hacia la pantalla de filtrado
         binding.registerButton.setOnClickListener {
-            val intent = Intent(this, FilterActivity::class.java)
+            val intent = Intent(this, ConfigurationActivity::class.java)
             this.startActivity(intent)
         }
 
+        //Función para enviar los datos registrados
+        binding.registerButton.setOnClickListener {
+            val nombre = binding.nameRegistration.text.toString()
+            val apellidoPaterno = binding.lastNameFRegistration.text.toString()
+            val apellidoMaterno = binding.lastNameMRegistration.text.toString()
+            //val telefono = binding.spinner.spinner.toString()
+            val DD_registration = binding.spinner.selectedItem.toString()
+            //val genero = binding.spinner2.text.toString()
+            val MM_registration = binding.spinner2.selectedItem.toString()
+            //val fechanac = binding.spinner3.text.toString()
+            val AAAA_registration = binding.spinner3.selectedItem.toString()
+            val gender = binding.gender.selectedItem.toString()
+            val pronoun = binding.pronoun.selectedItem.toString()
+
+            if (nombre.isNotEmpty() && apellidoPaterno.isNotEmpty() && apellidoMaterno.isNotEmpty() && DD_registration.isNotEmpty() && MM_registration.isNotEmpty() && AAAA_registration.isNotEmpty() && gender.isNotEmpty() && pronoun.isNotEmpty() ) {
+                registrarUsuario(
+                    nombre,
+                    apellidoPaterno,
+                    apellidoMaterno,
+                    DD_registration,
+                    MM_registration,
+                    AAAA_registration,
+                    gender,
+                    pronoun,
+                )
+            } else {
+                Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+
+    } //cierre de área de métodos y atributos
+
+
+    //Funciones para regsitro de datos en fireStore
+    override fun onStart() {
+        super.onStart()
+
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            reload()
+        } else {
+
+        }
+    }
+
+
+    private fun registrarUsuario(
+        nombre: String
+        apellidoPaterno: String
+        apellidoMaterno: String
+        DD_registration: String
+        MM_registration: String
+        AAAA_registration: String
+        gender: String
+        pronoun: String
+    ) {
+
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+
+
+                    val user = auth.currentUser
+
+                    val uid = user!!.uid
+
+                    val map = hashMapOf(
+                        "nombre" to nombre,
+                        "apellido" to apellido,
+                        "telefono" to telefono,
+                        "genero" to genero,
+                        "fechanacimiento" to fechanac,
+                        "pais" to pais,
+                        "provincia" to provincia,
+                        "direccion" to direccion,
+                        "correo" to email
+                    )
+
+                    val db = Firebase.firestore
+
+                    db.collection("users").document(uid).set(map).addOnSuccessListener {
+                        infoUser()
+                        Toast.makeText(this, "Usuario Registrado", Toast.LENGTH_SHORT).show()
+                    }
+                        .addOnFailureListener {
+                            Toast.makeText(
+                                this,
+                                "Fallo al guardar la informacion",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                } else {
+
+
+                    Toast.makeText(
+                        this, "Authentication failed.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                }
+            }
 
     }
-}
+
+    private fun infoUser() {
+        val infoUserIntent = Intent(this, ConfigurationActivity::class.java)
+        startActivity(infoUserIntent)
+
+    }
+
+
+    private fun reload() {
+
+    }
+
+
+
+} //cierre de la clase
