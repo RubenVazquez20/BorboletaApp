@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- drawable/check.xml -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="21dp"
+    android:height="25dp"
+    android:viewportWidth="21"
+    android:viewportHeight="25">
+    <group>
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M20.56 5.15c0.59 0.6 0.59 1.6 0 2.2l-12 12.5c-0.59 0.61-1.53 0.61-2.12 0l-6-6.25c-0.59-0.6-0.59-1.6 0-2.2 0.59-0.61 1.53-0.61 2.12 0l4.9 5.14 10.98-11.4c0.59-0.6 1.53-0.6 2.12 0Z"/>
+    </group>
+</vector>

@@ -9,4 +9,6 @@
     <color name="black_500">#262626</color>
     <color name="white">#FFFFFFFF</color>
     <color name="morado">#3D3B8E</color>
+    <color name="purple_borboleta">#3D3B8E</color>
+    <color name="lightpurple_borboleta">#6883BA</color>
 </resources>
