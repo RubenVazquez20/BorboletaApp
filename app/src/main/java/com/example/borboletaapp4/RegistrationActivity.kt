@@ -14,7 +14,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import java.util.*
 
 
 class RegistrationActivity : AppCompatActivity() {
@@ -118,6 +117,7 @@ class RegistrationActivity : AppCompatActivity() {
             val AAAA_registration = binding.spinner3.selectedItem.toString()
             val gender = binding.gender.selectedItem.toString()
             val pronoun = binding.pronoun.selectedItem.toString()
+            val rol = "user"
 
             if (nombre.isNotEmpty() && apellidoPaterno.isNotEmpty() && apellidoMaterno.isNotEmpty() && DD_registration.isNotEmpty() && MM_registration.isNotEmpty() && AAAA_registration.isNotEmpty() && gender.isNotEmpty() && pronoun.isNotEmpty() ) {
                 /*registrarUsuario(
@@ -152,20 +152,23 @@ class RegistrationActivity : AppCompatActivity() {
     }
 
 
-    /*fun registrarUsuario(
-        nombre: String
-        apellidoPaterno: String
-        apellidoMaterno: String
-        DD_registration: String
-        MM_registration: String
-        AAAA_registration: String
-        gender: String
-        pronoun: String
+    private fun registrarUsuario(
+        nombre: String,
+        apellidoPaterno: String,
+        apellidoMaterno: String,
+        DD_registration: String,
+        MM_registration: String,
+        AAAA_registration: String,
+        gender: String,
+        pronoun: String,
+        rol: String,
     ) {
 
-        auth.createUserWithEmailAndPassword(email, password)
+       /* val password = auth
+        val email = auth
+        auth.createUserWithEmailAndPassword(email.toString(), password.toString())
             .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
+                if (task.isSuccessful) { */
 
 
                     val user = auth.currentUser
@@ -174,19 +177,19 @@ class RegistrationActivity : AppCompatActivity() {
 
                     val map = hashMapOf(
                         "nombre" to nombre,
-                        "apellido" to apellido,
-                        "telefono" to telefono,
-                        "genero" to genero,
-                        "fechanacimiento" to fechanac,
-                        "pais" to pais,
-                        "provincia" to provincia,
-                        "direccion" to direccion,
-                        "correo" to email
+                        "apellidoPaterno" to apellidoPaterno,
+                        "apellidoMaterno" to apellidoMaterno,
+                        "DD_registration" to DD_registration,
+                        "MM_registration" to MM_registration,
+                        "AAAA_registration" to AAAA_registration,
+                        "gender" to gender,
+                        "pronoun" to pronoun,
+                        "rol" to rol
                     )
 
                     val db = Firebase.firestore
 
-                    db.collection("users").document(uid).set(map).addOnSuccessListener {
+                    db.collection("userData").document(auth.currentUser?.email.toString()).set(map).addOnSuccessListener {
                         infoUser()
                         Toast.makeText(this, "Usuario Registrado", Toast.LENGTH_SHORT).show()
                     }
@@ -197,7 +200,8 @@ class RegistrationActivity : AppCompatActivity() {
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
-                } else {
+                }
+                /*else {
 
 
                     Toast.makeText(
@@ -205,8 +209,8 @@ class RegistrationActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
 
-                }
-            }
+                }*/
+            //}
 
     }*/
 

@@ -163,7 +163,7 @@
                 android:scrollbars="vertical"
                 android:spinnerMode="dropdown"
                 android:textAlignment="center"
-                android:textColorHint="#0C2049"
+                android:textColor="#000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -183,6 +183,7 @@
                 android:scrollbars="vertical"
                 android:spinnerMode="dropdown"
                 android:textAlignment="center"
+                android:textColor="#000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -190,7 +191,7 @@
                 tools:layout_editor_absoluteY="653dp" />
 
             <TextView
-                android:id="@+id/spinner3"
+                android:id="@+id/AAAA_user_data"
                 android:layout_width="66dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -202,6 +203,7 @@
                 android:scrollbars="vertical"
                 android:spinnerMode="dropdown"
                 android:textAlignment="center"
+                android:textColor="#000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
