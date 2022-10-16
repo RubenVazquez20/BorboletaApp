@@ -212,11 +212,11 @@ class RegistrationActivity : AppCompatActivity() {
                 }*/
             //}
 
-    }*/
+    //}
 
     private fun infoUser() {
         val infoUserIntent = Intent(this, ConfigurationActivity::class.java)
-        startActivity(infoUserIntent)
+        this.startActivity(infoUserIntent)
 
     }
 
