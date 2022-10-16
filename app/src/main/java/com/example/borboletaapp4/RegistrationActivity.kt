@@ -120,7 +120,7 @@ class RegistrationActivity : AppCompatActivity() {
             val pronoun = binding.pronoun.selectedItem.toString()
 
             if (nombre.isNotEmpty() && apellidoPaterno.isNotEmpty() && apellidoMaterno.isNotEmpty() && DD_registration.isNotEmpty() && MM_registration.isNotEmpty() && AAAA_registration.isNotEmpty() && gender.isNotEmpty() && pronoun.isNotEmpty() ) {
-                registrarUsuario(
+                /*registrarUsuario(
                     nombre,
                     apellidoPaterno,
                     apellidoMaterno,
@@ -129,7 +129,7 @@ class RegistrationActivity : AppCompatActivity() {
                     AAAA_registration,
                     gender,
                     pronoun,
-                )
+                )*/
             } else {
                 Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show()
             }
@@ -152,7 +152,7 @@ class RegistrationActivity : AppCompatActivity() {
     }
 
 
-    private fun registrarUsuario(
+    /*fun registrarUsuario(
         nombre: String
         apellidoPaterno: String
         apellidoMaterno: String
@@ -208,7 +208,7 @@ class RegistrationActivity : AppCompatActivity() {
                 }
             }
 
-    }
+    }*/
 
     private fun infoUser() {
         val infoUserIntent = Intent(this, ConfigurationActivity::class.java)

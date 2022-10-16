@@ -16,6 +16,8 @@ import com.example.borboletaapp4.CardDiffCallback
 import com.example.borboletaapp4.CardStackAdapter
 import com.example.borboletaapp4.R
 import com.example.borboletaapp4.models.card
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager
 import com.yuyakaido.android.cardstackview.CardStackListener
 import com.yuyakaido.android.cardstackview.CardStackView
@@ -167,6 +169,11 @@ class TinderActivity : AppCompatActivity(),CardStackListener {
             image = ResourcesCompat.getDrawable(resources, R.drawable.ejemplo1, null)!!
         ))
         return cards
+    }
+
+    fun readData(){
+        val data = FirebaseFirestore.getInstance()
+
     }
 
 }
