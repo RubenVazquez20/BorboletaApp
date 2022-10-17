@@ -23,7 +23,7 @@
             android:name=".activities.ConfigurationActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.TinderActivity"
+            android:name=".activities.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

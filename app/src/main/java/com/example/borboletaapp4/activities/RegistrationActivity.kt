@@ -121,7 +121,7 @@ class RegistrationActivity : AppCompatActivity() {
             val rol = "user"
 
             if (nombre.isNotEmpty() && apellidoPaterno.isNotEmpty() && apellidoMaterno.isNotEmpty() && DD_registration.isNotEmpty() && MM_registration.isNotEmpty() && AAAA_registration.isNotEmpty() && gender.isNotEmpty() && pronoun.isNotEmpty() ) {
-                /*registrarUsuario(
+                registrarUsuario(
                     nombre,
                     apellidoPaterno,
                     apellidoMaterno,
@@ -130,7 +130,7 @@ class RegistrationActivity : AppCompatActivity() {
                     AAAA_registration,
                     gender,
                     pronoun,
-                )*/
+                    rol)
             } else {
                 Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show()
             }
@@ -160,11 +160,11 @@ class RegistrationActivity : AppCompatActivity() {
         rol: String,
     ) {
 
-       /* val password = auth
+        val password = auth
         val email = auth
         auth.createUserWithEmailAndPassword(email.toString(), password.toString())
             .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) { */
+                if (task.isSuccessful) {
                     val user = auth.currentUser
                     val uid = user!!.uid
                     val map = hashMapOf(
@@ -191,14 +191,14 @@ class RegistrationActivity : AppCompatActivity() {
                             ).show()
                         }
                 }
-                /*else {
+                else {
                     Toast.makeText(
                         this, "Authentication failed.",
                         Toast.LENGTH_SHORT
                     ).show()
-                }*/
-            //}
-    //}
+                }
+            }
+    }
 
     private fun infoUser() {
         val infoUserIntent = Intent(this, ConfigurationActivity::class.java)
