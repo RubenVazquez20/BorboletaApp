@@ -1,38 +1,39 @@
 package com.example.borboletaapp4.activities
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.animation.LinearInterpolator
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.drawerlayout.widget.DrawerLayout
-import com.yuyakaido.android.cardstackview.*
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DiffUtil
 import com.example.borboletaapp4.R
 import com.example.borboletaapp4.implementations.CardDiffCallback
 import com.example.borboletaapp4.implementations.CardStackAdapter
 import com.example.borboletaapp4.models.card
+import com.example.borboletaapp4.models.profesional
 import com.google.firebase.firestore.FirebaseFirestore
-import com.yuyakaido.android.cardstackview.CardStackLayoutManager
-import com.yuyakaido.android.cardstackview.CardStackListener
-import com.yuyakaido.android.cardstackview.CardStackView
-import com.yuyakaido.android.cardstackview.StackFrom
-import java.util.ArrayList
+import com.yuyakaido.android.cardstackview.*
 
 class TinderActivity : AppCompatActivity(),CardStackListener {
     private val drawerLayout by lazy { findViewById<DrawerLayout>(R.id.drawer_layout) }
     private val cardStackView by lazy { findViewById<CardStackView>(R.id.card_stack) }
     private val manager by lazy { CardStackLayoutManager(this,this)}
     private val adapter by lazy { CardStackAdapter(createCards()) }
+    private var arrProf = arrayListOf<profesional>()
+    private var us = hashMapOf<String, ArrayList<Int>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tinder)
         setupCardStackView()
+        readData()
     }
     override fun onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -137,30 +138,7 @@ class TinderActivity : AppCompatActivity(),CardStackListener {
 
     private fun createCards(): List<card> {
         val cards = ArrayList<card>()
-        cards.add( card(
-            name = "Professional 1", role = "Asesor", description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            image = ResourcesCompat.getDrawable(resources, R.drawable.ejemplo1, null)!!
-        ))
-        cards.add( card(
-            name = "Professional 2", role = "Asesor", description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            image = ResourcesCompat.getDrawable(resources, R.drawable.ejemplo1, null)!!
-        ))
-        cards.add( card(
-            name = "Professional 3", role = "Asesor", description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            image = ResourcesCompat.getDrawable(resources, R.drawable.ejemplo1, null)!!
-        ))
-        cards.add( card(
-            name = "Professional 4", role = "Asesor", description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            image = ResourcesCompat.getDrawable(resources, R.drawable.ejemplo1, null)!!
-        ))
-        cards.add( card(
-            name = "Professional 5", role = "Asesor", description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            image = ResourcesCompat.getDrawable(resources, R.drawable.ejemplo1, null)!!
-        ))
-        cards.add( card(
-            name = "Professional 6", role = "Asesor", description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            image = ResourcesCompat.getDrawable(resources, R.drawable.ejemplo1, null)!!
-        ))
+
         cards.add( card(
             name = "Professional 7", role = "Asesor", description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
             image = ResourcesCompat.getDrawable(resources, R.drawable.ejemplo1, null)!!
@@ -168,9 +146,45 @@ class TinderActivity : AppCompatActivity(),CardStackListener {
         return cards
     }
 
-    fun readData(){
-        val data = FirebaseFirestore.getInstance()
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun readData(){
 
+        val db = FirebaseFirestore.getInstance()
+
+        db.collection("userData").whereNotEqualTo("rol", "user")
+            .get().addOnCompleteListener {
+
+            var cont: Int = 0
+
+            if(it.isSuccessful) {
+                println("successful query")
+                println(it.result)
+                for(document in it.result!!){
+                    arrProf.add(profesional(document.data.getValue("nombre") as String,
+                                            document.data.getValue("apellidoPaterno") as String,
+                                            document.data.getValue("rol") as String,
+                                            document.data.getValue("filtros") as ArrayList<String>))
+                    val arrFiltros : ArrayList<String>? = document.data.getValue("filtros") as?  ArrayList<String>?
+                    for (element in arrFiltros!!){
+                        if(us.containsKey(element)){
+                            var aux = us[element]!!
+                            aux.add(cont)
+                            us.put(element, aux)
+                        }else{
+                            us.put(element, arrayListOf<Int>(cont))
+                        }
+                    }
+                    cont += 1
+                }
+            }
+            for (e in us) {
+                //to get key
+                println(e.key)
+                //and to get value
+                println(e.value)
+            }
+            println(arrProf)
+        }
     }
 
 }
