@@ -18,7 +18,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/first" />
+        app:srcCompat="@drawable/first"/>
 
     <TextView
         android:id="@+id/tv_bienvenida"
@@ -27,7 +27,7 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
         android:fontFamily="@font/pt_serif"
-        android:text="Bienvenido Óscar"
+        android:text=""
         android:textColor="#3D3B8E"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -75,7 +75,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/gradient_mentor">
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
