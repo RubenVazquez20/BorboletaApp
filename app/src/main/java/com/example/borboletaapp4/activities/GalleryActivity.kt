@@ -19,7 +19,7 @@ import com.example.borboletaapp4.models.profesional
 import com.google.firebase.firestore.FirebaseFirestore
 import com.yuyakaido.android.cardstackview.*
 
-class TinderActivity : AppCompatActivity(),CardStackListener {
+class GalleryActivity : AppCompatActivity(),CardStackListener {
     private val drawerLayout by lazy { findViewById<DrawerLayout>(R.id.drawer_layout) }
     private val cardStackView by lazy { findViewById<CardStackView>(R.id.card_stack) }
     private val manager by lazy { CardStackLayoutManager(this,this)}
@@ -29,7 +29,7 @@ class TinderActivity : AppCompatActivity(),CardStackListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tinder)
+        setContentView(R.layout.activity_gallery)
         setupCardStackView()
         readData()
     }
@@ -157,7 +157,7 @@ class TinderActivity : AppCompatActivity(),CardStackListener {
     }
     private fun readData(){
         val db = FirebaseFirestore.getInstance()
-        db.collection("userData").whereNotEqualTo("rol", "user")
+        db.collection("profesionales").whereNotEqualTo("rol", "user")
             .get().addOnCompleteListener {
                 var cont = 0
 
