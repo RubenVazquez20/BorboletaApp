@@ -7,18 +7,78 @@
     tools:context=".activities.HomeActivity"
     android:background="#ffffff">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/first" />
+
+    <TextView
+        android:id="@+id/tv_bienvenida"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints">
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/pt_serif"
+        android:text="Bienvenido Óscar"
+        android:textColor="#3D3B8E"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
-        <TextView
+    <TextView
+        android:id="@+id/tv_revista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="200dp"
+        android:fontFamily="@font/pt_serif"
+        android:text="Revista Borboleta"
+        android:textColor="#3D3B8E"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_bienvenida" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_carouselContainer"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_margin="24dp"
+        android:layout_marginTop="25dp"
+        android:elevation="8dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_revista">
+
+        <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+            android:id="@+id/carousel_revista"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="fddfdfd"
-            android:textColor="#000"/>
+            android:layout_height="match_parent"
+            app:bottomShadowAlpha="0.8"
+            app:bottomShadowHeight="64dp"
+            app:captionMargin="10dp"
+            app:captionTextSize="16sp"
+            app:showBottomShadow="true"
+            app:showIndicator="false"
+            app:showNavigationButtons="false"
+            app:showTopShadow="false"
+            app:autoPlay="true"
+            app:autoPlayDelay="4000"/>
 
-
-    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
