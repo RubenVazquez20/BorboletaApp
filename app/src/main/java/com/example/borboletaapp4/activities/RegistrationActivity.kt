@@ -1,4 +1,4 @@
-package com.example.borboletaapp4
+package com.example.borboletaapp4.activities
 
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -9,12 +9,12 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.borboletaapp4.R
 import com.example.borboletaapp4.databinding.ActivityRegistrationBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-
 
 class RegistrationActivity : AppCompatActivity() {
 
@@ -139,7 +139,6 @@ class RegistrationActivity : AppCompatActivity() {
 
     } //cierre de área de métodos y atributos
 
-
     //Funciones para regsitro de datos en fireStore
     override fun onStart() {
         super.onStart()
@@ -151,7 +150,6 @@ class RegistrationActivity : AppCompatActivity() {
 
         }
     }
-
 
     private fun registrarUsuario(
         nombre: String,

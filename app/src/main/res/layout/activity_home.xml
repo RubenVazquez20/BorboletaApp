@@ -6,19 +6,47 @@
     android:layout_height="match_parent"
     tools:context=".activities.HomeActivity"
     android:background="#ffffff">
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints">
-
-        <TextView
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <RelativeLayout
+            android:id="@+id/status_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="fddfdfd"
-            android:textColor="#000"/>
+            android:layout_height="120dp">
 
+        </RelativeLayout>
 
+        <RelativeLayout
+            android:id="@+id/main_scene"
+            android:layout_width="match_parent"
+            android:layout_height="480dp">
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="128dp"
+                android:layout_marginBottom="121dp"
+                android:text="Button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="0.87" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/nav_bar"
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+
+        </RelativeLayout>
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

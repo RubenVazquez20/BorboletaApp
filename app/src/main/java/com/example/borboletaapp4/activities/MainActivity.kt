@@ -113,8 +113,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-
     private  fun updateUI () {
         val user = auth.currentUser
 

@@ -1,4 +1,4 @@
-package com.example.borboletaapp4
+package com.example.borboletaapp4.utils
 
 import android.content.Context
 import android.content.Intent

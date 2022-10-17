@@ -1,12 +1,10 @@
 package com.example.borboletaapp4.activities
 
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.animation.LinearInterpolator
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.GravityCompat
@@ -27,7 +25,7 @@ class TinderActivity : AppCompatActivity(),CardStackListener {
     private val manager by lazy { CardStackLayoutManager(this,this)}
     private val adapter by lazy { CardStackAdapter(createCards()) }
     private var arrProf = arrayListOf<profesional>()
-    private var us = hashMapOf<String, ArrayList<Int>>()
+    private var filterMap = hashMapOf<String, ArrayList<Int>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,21 +46,23 @@ class TinderActivity : AppCompatActivity(),CardStackListener {
     }
 
     override fun onCardSwiped(direction: Direction) {
-        if (direction ==Direction.Left){
-            println("cardleft")
-            ItsRewindTime()
-        } else
-            if (direction ==Direction.Right){
+        when (direction) {
+            Direction.Left -> {
+                println("cardleft")
+                ItsRewindTime()
+            }
+            Direction.Right -> {
 
-            } else
-                if (direction == Direction.Bottom){
+            }
+            Direction.Bottom -> {
 
-                } else
-                    if (direction == Direction.Top){
+            }
+            Direction.Top -> {
 
-                    }
+            }
+        }
         Log.d("CardStackView", "onCardSwiped: p = ${manager.topPosition}, d = $direction")
-        if (manager.topPosition == adapter.itemCount - 5) {
+        if (manager.topPosition == adapter.itemCount - (adapter.itemCount-1)) {
             paginate()
         }
     }
@@ -126,6 +126,7 @@ class TinderActivity : AppCompatActivity(),CardStackListener {
         val new = createCards()
         val callback = CardDiffCallback(old, new)
         val result = DiffUtil.calculateDiff(callback)
+        adapter.setCards(new)
         result.dispatchUpdatesTo(adapter)
     }
 
@@ -138,53 +139,53 @@ class TinderActivity : AppCompatActivity(),CardStackListener {
 
     private fun createCards(): List<card> {
         val cards = ArrayList<card>()
-
+        for (info in arrProf){
+            cards.add(card(name="${info.nombre} ${info.apellido}",
+                            role = info.rol,
+                            description = "This is a template description",
+                            image=ResourcesCompat.getDrawable(resources, R.drawable.ejemplo1, null)!!))
+        }
+        /*
         cards.add( card(
-            name = "Professional 7", role = "Asesor", description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            name = "Professional 1",
+            role = "Asesor",
+            description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
             image = ResourcesCompat.getDrawable(resources, R.drawable.ejemplo1, null)!!
-        ))
+        ))*/
+        println(cards)
         return cards
     }
-
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun readData(){
-
         val db = FirebaseFirestore.getInstance()
-
         db.collection("userData").whereNotEqualTo("rol", "user")
             .get().addOnCompleteListener {
+                var cont = 0
 
-            var cont: Int = 0
-
-            if(it.isSuccessful) {
-                println("successful query")
-                println(it.result)
-                for(document in it.result!!){
-                    arrProf.add(profesional(document.data.getValue("nombre") as String,
-                                            document.data.getValue("apellidoPaterno") as String,
-                                            document.data.getValue("rol") as String,
-                                            document.data.getValue("filtros") as ArrayList<String>))
-                    val arrFiltros : ArrayList<String>? = document.data.getValue("filtros") as?  ArrayList<String>?
-                    for (element in arrFiltros!!){
-                        if(us.containsKey(element)){
-                            var aux = us[element]!!
-                            aux.add(cont)
-                            us.put(element, aux)
-                        }else{
-                            us.put(element, arrayListOf<Int>(cont))
+                if (it.isSuccessful) {
+                    for (document in it.result!!) {
+                        arrProf.add(
+                            profesional(
+                                document.data.getValue("nombre") as String,
+                                document.data.getValue("apellidoPaterno") as String,
+                                document.data.getValue("rol") as String,
+                                document.data.getValue("filtros") as ArrayList<String>
+                            )
+                        )
+                        val arrFiltros: ArrayList<String>? =
+                            document.data.getValue("filtros") as? ArrayList<String>?
+                        for (element in arrFiltros!!) {
+                            if (filterMap.containsKey(element)) {
+                                var aux = filterMap[element]!!
+                                aux.add(cont)
+                                filterMap[element] = aux
+                            } else {
+                                filterMap[element] = arrayListOf<Int>(cont)
+                            }
                         }
+                        cont += 1
                     }
-                    cont += 1
-                }
-            }
-            for (e in us) {
-                //to get key
-                println(e.key)
-                //and to get value
-                println(e.value)
-            }
-            println(arrProf)
-        }
-    }
+                    paginate()
+                    reload()
+                }}}
 
 }

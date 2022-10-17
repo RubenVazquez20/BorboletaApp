@@ -1,4 +1,4 @@
-package com.example.borboletaapp4
+package com.example.borboletaapp4.activities
 
 import android.content.ContentValues.TAG
 import android.content.Intent
@@ -7,7 +7,9 @@ import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.borboletaapp4.R
 import com.example.borboletaapp4.databinding.ActivitySignInBinding
+import com.example.borboletaapp4.utils.login
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
