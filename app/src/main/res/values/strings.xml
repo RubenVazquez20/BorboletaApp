@@ -66,5 +66,8 @@
     <string name="generoConfiguration">Género</string>
     <string name="pronombreConfiguration">Pronombre</string>
 
+    <!-- AllSet.kt-->
+    <string name="allSet">Has sido registrado</string>
+
 
 </resources>

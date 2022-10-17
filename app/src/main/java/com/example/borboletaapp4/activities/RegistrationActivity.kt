@@ -98,11 +98,8 @@ class RegistrationActivity : AppCompatActivity() {
             }
         }
 
-        //Agregar direccionamiento hacia la pantalla de filtrado
-        binding.registerButton.setOnClickListener {
-            val intent = Intent(this, ConfigurationActivity::class.java)
-            this.startActivity(intent)
-        }
+
+
 
         //Función para enviar los datos registrados
         binding.registerButton.setOnClickListener {
@@ -136,6 +133,11 @@ class RegistrationActivity : AppCompatActivity() {
             }
         }
 
+        //Agregar direccionamiento hacia la pantalla de filtrado
+        binding.registerButton.setOnClickListener {
+            val intent = Intent(this, AllSetActivity::class.java)
+            this.startActivity(intent)
+        }
 
     } //cierre de área de métodos y atributos
 
@@ -163,12 +165,6 @@ class RegistrationActivity : AppCompatActivity() {
         rol: String,
     ) {
 
-       /* val password = auth
-        val email = auth
-        auth.createUserWithEmailAndPassword(email.toString(), password.toString())
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) { */
-
 
                     val user = auth.currentUser
 
@@ -189,8 +185,9 @@ class RegistrationActivity : AppCompatActivity() {
                     val db = Firebase.firestore
 
                     db.collection("userData").document(auth.currentUser?.email.toString()).set(map).addOnSuccessListener {
-                        infoUser()
+                        //infoUser()
                         Toast.makeText(this, "Usuario Registrado", Toast.LENGTH_SHORT).show()
+
                     }
                         .addOnFailureListener {
                             Toast.makeText(
@@ -200,18 +197,7 @@ class RegistrationActivity : AppCompatActivity() {
                             ).show()
                         }
                 }
-                /*else {
 
-
-                    Toast.makeText(
-                        this, "Authentication failed.",
-                        Toast.LENGTH_SHORT
-                    ).show()
-
-                }*/
-            //}
-
-    //}
 
     private fun infoUser() {
         val infoUserIntent = Intent(this, ConfigurationActivity::class.java)

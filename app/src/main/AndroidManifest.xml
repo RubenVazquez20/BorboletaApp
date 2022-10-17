@@ -20,6 +20,9 @@
         android:theme="@style/Theme.Main"
         tools:targetApi="31">
         <activity
+            android:name=".activities.AllSetActivity"
+            android:exported="true" />
+        <activity
             android:name=".activities.ConfigurationActivity"
             android:exported="false" />
         <activity
