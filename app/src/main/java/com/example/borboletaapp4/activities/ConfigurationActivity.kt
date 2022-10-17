@@ -1,4 +1,4 @@
-package com.example.borboletaapp4.activities
+package com.example.borboletaapp4
 
 import android.content.Intent
 import android.os.Bundle
@@ -22,45 +22,59 @@ class ConfigurationActivity : AppCompatActivity() {
         auth = Firebase.auth
 
         //Métodos
+
         val currentUser = auth.currentUser
         //val uid = currentUser!!.uid
         val db = Firebase.firestore
 
         db.collection("userData").document(auth.currentUser?.email.toString()).get().addOnSuccessListener {
-            binding.nameUserData.text = ("Nombre: " + it.get("nombre") as String?)
-            binding.lastNameUserData.text = ("ApellidoPaterno: " + it.get("apellidoPaterno") as String?)
-            binding.lastNameMUserData.text = ("ApellidoMaterno: " + it.get("ApellidoMaterno") as String?)
-            binding.DDUserData.text = ("DD_registration: " + it.get("DD_registration") as String?)
-            binding.MMUserData.text = ("MM_registration: " + it.get("MM_registration") as String?)
-            binding.AAAAUserData.text = ("AAAA_registration" + it.get("AAAA_registration") as String?)
-            binding.genderUserData.text = ("gender: " + it.get("gender") as String?)
-            binding.pronounUserData.text = ("pronoun: " + it.get("pronoun") as String?)
+            binding.nameUserData.text = (it.get("nombre") as String?)
+            binding.lastNameUserData.text = (it.get("apellidoPaterno") as String?)
+            binding.lastNameMUserData.text = (it.get("apellidoMaterno") as String?)
+            binding.DDUserData.text = (it.get("DD_registration") as String?)
+            binding.MMUserData.text = (it.get("MM_registration") as String?)
+            binding.AAAAUserData.text = (it.get("AAAA_registration") as String?)
+            binding.genderUserData.text = (it.get("gender") as String?)
+            binding.pronounUserData.text = (it.get("pronoun") as String?)
         }
 
-        //Agregar direccionamiento hacia la pantalla de filtrado
+
+        /*Agregar direccionamiento hacia la pantalla de filtrado
         binding.filterButon.setOnClickListener {
             val intent = Intent(this, FilterActivity::class.java)
             this.startActivity(intent)
+        }*/
+
+
+        //Agregar direccionamiento hacia la pantalla de filtrado
+        binding.signOutButon.setOnClickListener {
+            cerrarSesion()
         }
+
     }
 
+
     private fun cerrarSesion() {
-        auth.signOut()
-        val intent = Intent(this, MainActivity::class.java)
+        Firebase.auth.signOut()
+        val intent = Intent(this, SignInActivity::class.java)
         startActivity(
             intent
         )
     }
 
+
     override fun onStart() {
         super.onStart()
+
         val currentUser = auth.currentUser
         if (currentUser != null) {
             reload()
         } else {
+
         }
     }
 
     private fun reload() {
+
     }
 }

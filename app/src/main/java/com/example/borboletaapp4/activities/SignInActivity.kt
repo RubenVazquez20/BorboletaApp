@@ -1,4 +1,4 @@
-package com.example.borboletaapp4.activities
+package com.example.borboletaapp4
 
 import android.content.ContentValues.TAG
 import android.content.Intent
@@ -7,9 +7,7 @@ import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.borboletaapp4.R
 import com.example.borboletaapp4.databinding.ActivitySignInBinding
-import com.example.borboletaapp4.login
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -56,6 +54,7 @@ class SignInActivity : AppCompatActivity() {
         binding.signInAppCompatButton.setOnClickListener {
             val mEmail = binding.emailEditText.text.toString()
             val mPassword = binding.passwordEditText.text.toString()
+
             when {
                 mPassword.isEmpty() || mEmail.isEmpty() -> {
                     Toast.makeText(this, "Email o contraseña o incorrectos.",
@@ -92,13 +91,16 @@ class SignInActivity : AppCompatActivity() {
                 Log.d(TAG, "facebook:onSuccess:$result")
                 handleFacebookAccessToken(result.accessToken)
             }
+
             override fun onCancel() {
                 Log.d(TAG, "facebook:onCancel")
             }
+
             override fun onError(error: FacebookException) {
                 Log.d(TAG, "facebook:onError", error)
             }
         })
+
 
     }
 
@@ -190,14 +192,6 @@ class SignInActivity : AppCompatActivity() {
             }
     }
 
-    /* ...
-    fun onActivityResult2(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        // Pass the activity result back to the Facebook SDK
-        //callbackManager.onActivityResult(requestCode, resultCode, data)
-    }
-*/
     private fun handleFacebookAccessToken(token: AccessToken) {
         Log.d(TAG, "handleFacebookAccessToken:$token")
 
@@ -208,7 +202,7 @@ class SignInActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithCredential:success")
                     val user = auth.currentUser
-                    startActivity(Intent(this, RegistrationActivity::class.java))
+                    startActivity(Intent(this,RegistrationActivity::class.java))
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
@@ -217,7 +211,6 @@ class SignInActivity : AppCompatActivity() {
                 }
             }
     }
-
 
 
 }
