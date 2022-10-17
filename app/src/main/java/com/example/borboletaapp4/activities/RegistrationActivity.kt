@@ -1,4 +1,4 @@
-package com.example.borboletaapp4
+package com.example.borboletaapp4.activities
 
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.borboletaapp4.R
 import com.example.borboletaapp4.databinding.ActivityRegistrationBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -44,7 +45,7 @@ class RegistrationActivity : AppCompatActivity() {
         auth = Firebase.auth
 
         val spinner = findViewById<Spinner>(R.id.spinner)
-        val arrayAdapter = ArrayAdapter<String>(this,R.layout.style_spinner,daysRegistration)
+        val arrayAdapter = ArrayAdapter<String>(this, R.layout.style_spinner,daysRegistration)
         spinner.adapter = arrayAdapter
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
@@ -55,7 +56,7 @@ class RegistrationActivity : AppCompatActivity() {
         }
 
         val spinner2 = findViewById<Spinner>(R.id.spinner2)
-        val arrayAdapter2 = ArrayAdapter<String>(this,R.layout.style_spinner,monthsRegistration)
+        val arrayAdapter2 = ArrayAdapter<String>(this, R.layout.style_spinner,monthsRegistration)
         spinner2.adapter = arrayAdapter2
         spinner2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
@@ -66,7 +67,7 @@ class RegistrationActivity : AppCompatActivity() {
         }
 
         val spinner3 = findViewById<Spinner>(R.id.spinner3)
-        val arrayAdapter3 = ArrayAdapter<String>(this,R.layout.style_spinner,yearsRegistration)
+        val arrayAdapter3 = ArrayAdapter<String>(this, R.layout.style_spinner,yearsRegistration)
         spinner3.adapter = arrayAdapter3
         spinner3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
@@ -77,7 +78,7 @@ class RegistrationActivity : AppCompatActivity() {
         }
 
         val gender= findViewById<Spinner>(R.id.gender)
-        val arrayAdapter4 = ArrayAdapter<String>(this,R.layout.style_spinner,genderRegistration)
+        val arrayAdapter4 = ArrayAdapter<String>(this, R.layout.style_spinner,genderRegistration)
         gender.adapter = arrayAdapter4
         gender.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
@@ -88,7 +89,7 @@ class RegistrationActivity : AppCompatActivity() {
         }
 
         val pronoun= findViewById<Spinner>(R.id.pronoun)
-        val arrayAdapter5 = ArrayAdapter<String>(this,R.layout.style_spinner, pronounRegistration)
+        val arrayAdapter5 = ArrayAdapter<String>(this, R.layout.style_spinner, pronounRegistration)
         pronoun.adapter = arrayAdapter5
         pronoun.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
@@ -134,23 +135,18 @@ class RegistrationActivity : AppCompatActivity() {
                 Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show()
             }
         }
-
-
     } //cierre de área de métodos y atributos
 
 
     //Funciones para regsitro de datos en fireStore
     override fun onStart() {
         super.onStart()
-
         val currentUser = auth.currentUser
         if (currentUser != null) {
             reload()
         } else {
-
         }
     }
-
 
     private fun registrarUsuario(
         nombre: String,
@@ -169,12 +165,8 @@ class RegistrationActivity : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(email.toString(), password.toString())
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) { */
-
-
                     val user = auth.currentUser
-
                     val uid = user!!.uid
-
                     val map = hashMapOf(
                         "nombre" to nombre,
                         "apellidoPaterno" to apellidoPaterno,
@@ -186,9 +178,7 @@ class RegistrationActivity : AppCompatActivity() {
                         "pronoun" to pronoun,
                         "rol" to rol
                     )
-
                     val db = Firebase.firestore
-
                     db.collection("userData").document(auth.currentUser?.email.toString()).set(map).addOnSuccessListener {
                         infoUser()
                         Toast.makeText(this, "Usuario Registrado", Toast.LENGTH_SHORT).show()
@@ -202,29 +192,18 @@ class RegistrationActivity : AppCompatActivity() {
                         }
                 }
                 /*else {
-
-
                     Toast.makeText(
                         this, "Authentication failed.",
                         Toast.LENGTH_SHORT
                     ).show()
-
                 }*/
             //}
-
     //}
 
     private fun infoUser() {
         val infoUserIntent = Intent(this, ConfigurationActivity::class.java)
         this.startActivity(infoUserIntent)
-
     }
-
-
     private fun reload() {
-
     }
-
-
-
 } //cierre de la clase

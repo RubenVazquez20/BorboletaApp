@@ -2,6 +2,8 @@ package com.example.borboletaapp4
 
 import android.content.Context
 import android.content.Intent
+import com.example.borboletaapp4.activities.RegistrationActivity
+import com.example.borboletaapp4.activities.SignInActivity
 import com.google.firebase.auth.FirebaseAuth
 
 fun Context.login(email:String){

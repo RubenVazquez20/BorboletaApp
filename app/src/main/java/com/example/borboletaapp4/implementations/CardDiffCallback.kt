@@ -1,4 +1,4 @@
-package com.example.borboletaapp4
+package com.example.borboletaapp4.implementations
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.borboletaapp4.models.card

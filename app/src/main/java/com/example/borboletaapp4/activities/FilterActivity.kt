@@ -1,4 +1,4 @@
-package com.example.borboletaapp4
+package com.example.borboletaapp4.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -19,7 +19,6 @@ class FilterActivity : AppCompatActivity() {
         binding = ActivityFilterBinding.inflate(layoutInflater)
         setContentView(binding.root)
         auth = Firebase.auth
-
 
         //Agregar direccionamiento hacia la pantalla de especialista inicial
         //binding.continueButtonFilter.setOnClickListener {

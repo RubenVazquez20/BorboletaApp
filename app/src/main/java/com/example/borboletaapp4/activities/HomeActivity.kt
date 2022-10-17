@@ -1,7 +1,8 @@
-package com.example.borboletaapp4
+package com.example.borboletaapp4.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.borboletaapp4.R
 
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

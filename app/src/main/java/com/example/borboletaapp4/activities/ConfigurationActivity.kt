@@ -1,4 +1,4 @@
-package com.example.borboletaapp4
+package com.example.borboletaapp4.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -22,7 +22,6 @@ class ConfigurationActivity : AppCompatActivity() {
         auth = Firebase.auth
 
         //Métodos
-
         val currentUser = auth.currentUser
         //val uid = currentUser!!.uid
         val db = Firebase.firestore
@@ -38,16 +37,12 @@ class ConfigurationActivity : AppCompatActivity() {
             binding.pronounUserData.text = ("pronoun: " + it.get("pronoun") as String?)
         }
 
-
         //Agregar direccionamiento hacia la pantalla de filtrado
         binding.filterButon.setOnClickListener {
             val intent = Intent(this, FilterActivity::class.java)
             this.startActivity(intent)
         }
-
-
     }
-
 
     private fun cerrarSesion() {
         auth.signOut()
@@ -57,19 +52,15 @@ class ConfigurationActivity : AppCompatActivity() {
         )
     }
 
-
     override fun onStart() {
         super.onStart()
-
         val currentUser = auth.currentUser
         if (currentUser != null) {
             reload()
         } else {
-
         }
     }
 
     private fun reload() {
-
     }
 }

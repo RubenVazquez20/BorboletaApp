@@ -1,4 +1,4 @@
-package com.example.borboletaapp4
+package com.example.borboletaapp4.activities
 
 import android.os.Bundle
 import android.util.Log
@@ -12,12 +12,11 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DiffUtil
-import com.example.borboletaapp4.CardDiffCallback
-import com.example.borboletaapp4.CardStackAdapter
 import com.example.borboletaapp4.R
+import com.example.borboletaapp4.implementations.CardDiffCallback
+import com.example.borboletaapp4.implementations.CardStackAdapter
 import com.example.borboletaapp4.models.card
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager
 import com.yuyakaido.android.cardstackview.CardStackListener
 import com.yuyakaido.android.cardstackview.CardStackView
@@ -30,13 +29,11 @@ class TinderActivity : AppCompatActivity(),CardStackListener {
     private val manager by lazy { CardStackLayoutManager(this,this)}
     private val adapter by lazy { CardStackAdapter(createCards()) }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tinder)
         setupCardStackView()
     }
-
     override fun onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawers()

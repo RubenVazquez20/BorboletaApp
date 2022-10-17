@@ -1,4 +1,4 @@
-package com.example.borboletaapp4
+package com.example.borboletaapp4.implementations
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,11 +6,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.borboletaapp4.R
 import com.example.borboletaapp4.models.card
 
 class CardStackAdapter(
     private var cards: List<card> = emptyList()): RecyclerView.Adapter<CardStackAdapter.ViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType:Int):ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType:Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return ViewHolder(inflater.inflate(R.layout.card,parent,false))
     }

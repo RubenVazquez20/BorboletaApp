@@ -20,10 +20,10 @@
         android:theme="@style/Theme.Main"
         tools:targetApi="31">
         <activity
-            android:name=".ConfigurationActivity"
+            android:name=".activities.ConfigurationActivity"
             android:exported="false" />
         <activity
-            android:name=".TinderActivity"
+            android:name=".activities.TinderActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,23 +31,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DeleteAccountActivity" />
-        <activity android:name=".UpdatePasswordActivity" />
-        <activity android:name=".CheckEmailActivity" />
-        <activity android:name=".AccountRecoveryActivity" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".SignInActivity" />
+        <activity android:name=".activities.DeleteAccountActivity" />
+        <activity android:name=".activities.UpdatePasswordActivity" />
+        <activity android:name=".activities.CheckEmailActivity" />
+        <activity android:name=".activities.AccountRecoveryActivity" />
+        <activity android:name=".activities.SignUpActivity" />
+        <activity android:name=".activities.SignInActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:theme="@style/Theme.Main" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".activities.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".RegistrationActivity"
+            android:name=".activities.RegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".FilterActivity"
+            android:name=".activities.FilterActivity"
             android:exported="false" />
 
         <meta-data
