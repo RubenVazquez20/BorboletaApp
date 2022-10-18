@@ -142,36 +142,39 @@
             app:layout_constraintTop_toBottomOf="@+id/buildings"
             app:layout_constraintVertical_bias="0.233">
 
-            <androidx.appcompat.widget.AppCompatButton
+            <ToggleButton
                 android:id="@+id/btn1"
                 android:layout_width="90dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginLeft="8dp"
-                android:background="@drawable/ic_buttom"
-                android:text="@string/filtro1"
+                android:background="@drawable/ic_buttomchange"
+                android:textOn="@string/filtro1"
+                android:textOff="@string/filtro1"
                 android:textSize="10sp"
                 android:textColor="@color/white"/>
 
-            <androidx.appcompat.widget.AppCompatButton
+            <ToggleButton
                 android:id="@+id/btn2"
                 android:layout_width="90dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginLeft="8dp"
-                android:background="@drawable/ic_buttom"
-                android:text="@string/filtro1"
+                android:background="@drawable/ic_buttomchange"
+                android:textOn="@string/filtro2"
+                android:textOff="@string/filtro2"
                 android:textSize="10sp"
                 android:textColor="@color/white" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <ToggleButton
                 android:id="@+id/btn3"
                 android:layout_width="90dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginLeft="8dp"
-                android:background="@drawable/ic_buttom"
-                android:text="@string/filtro1"
+                android:background="@drawable/ic_buttomchange"
+                android:textOn="@string/filtro3"
+                android:textOff="@string/filtro3"
                 android:textSize="10sp"
                 android:textColor="@color/white" />
 
@@ -193,25 +196,27 @@
             app:layout_constraintTop_toBottomOf="@+id/buildings"
             app:layout_constraintVertical_bias="0.233">
 
-            <androidx.appcompat.widget.AppCompatButton
+            <ToggleButton
                 android:id="@+id/btn4"
                 android:layout_width="90dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginLeft="8dp"
-                android:background="@drawable/ic_buttom"
-                android:text="@string/filtro1"
+                android:background="@drawable/ic_buttomchange"
+                android:textOn="@string/filtro4"
+                android:textOff="@string/filtro4"
                 android:textSize="10sp"
                 android:textColor="@color/white" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <ToggleButton
                 android:id="@+id/btn5"
                 android:layout_width="90dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginLeft="8dp"
-                android:background="@drawable/ic_buttom"
-                android:text="@string/filtro1"
+                android:background="@drawable/ic_buttomchange"
+                android:textOn="@string/filtro5"
+                android:textOff="@string/filtro5"
                 android:textSize="10sp"
                 android:textColor="@color/white" />
 
@@ -233,36 +238,39 @@
             app:layout_constraintTop_toBottomOf="@+id/buildings"
             app:layout_constraintVertical_bias="0.233">
 
-            <androidx.appcompat.widget.AppCompatButton
+            <ToggleButton
                 android:id="@+id/btn6"
                 android:layout_width="90dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginLeft="8dp"
-                android:background="@drawable/ic_buttom"
-                android:text="@string/filtro1"
+                android:background="@drawable/ic_buttomchange"
+                android:textOn="@string/filtro6"
+                android:textOff="@string/filtro6"
                 android:textSize="10sp"
                 android:textColor="@color/white" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <ToggleButton
                 android:id="@+id/btn7"
                 android:layout_width="90dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginLeft="8dp"
-                android:background="@drawable/ic_buttom"
-                android:text="@string/filtro1"
+                android:background="@drawable/ic_buttomchange"
+                android:textOn="@string/filtro7"
+                android:textOff="@string/filtro7"
                 android:textSize="10sp"
                 android:textColor="@color/white" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <ToggleButton
                 android:id="@+id/btn8"
                 android:layout_width="90dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginLeft="8dp"
-                android:background="@drawable/ic_buttom"
-                android:text="@string/filtro1"
+                android:background="@drawable/ic_buttomchange"
+                android:textOn="@string/filtro8"
+                android:textOff="@string/filtro8"
                 android:textSize="10sp"
                 android:textColor="@color/white" />
 
@@ -284,25 +292,27 @@
             app:layout_constraintTop_toBottomOf="@+id/buildings"
             app:layout_constraintVertical_bias="0.233">
 
-            <androidx.appcompat.widget.AppCompatButton
+            <ToggleButton
                 android:id="@+id/btn9"
                 android:layout_width="90dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginLeft="8dp"
-                android:background="@drawable/ic_buttom"
-                android:text="@string/filtro1"
+                android:background="@drawable/ic_buttomchange"
+                android:textOn="@string/filtro9"
+                android:textOff="@string/filtro9"
                 android:textSize="10sp"
                 android:textColor="@color/white" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <ToggleButton
                 android:id="@+id/btn10"
                 android:layout_width="90dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginLeft="8dp"
-                android:background="@drawable/ic_buttom"
-                android:text="@string/filtro1"
+                android:background="@drawable/ic_buttomchange"
+                android:textOn="@string/filtro10"
+                android:textOff="@string/filtro10"
                 android:textSize="10sp"
                 android:textColor="#fff" />
 

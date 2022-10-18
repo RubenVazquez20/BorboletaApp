@@ -44,11 +44,22 @@
     <string name="uploadImageRegistration">Sube una foto de perfil :)</string>
     <string name="register">Registrate</string>
     <string name="next">Continua</string>
-    <string name="filtro1">Filtro#1</string>
+
+    <!--Filtros Example-->
+    <string name="filtro1">Ansiedad</string>
+    <string name="filtro2">Empredimiento</string>
+    <string name="filtro3">Depresión</string>
+    <string name="filtro4">Exito</string>
+    <string name="filtro5">Inclusión</string>
+    <string name="filtro6">Objetivos</string>
+    <string name="filtro7">Proyectos</string>
+    <string name="filtro8">Estudios</string>
+    <string name="filtro9">Presión</string>
+    <string name="filtro10">Cansancio</string>
 
     <!--FilterActivity -->
-    <string name="subtitle1">Let’s get know each other</string>
-    <string name="subtitle2">Choose whatever topic you’re interested in</string>
+    <string name="subtitle1">¡Permitenos conocerte!</string>
+    <string name="subtitle2">Selecciona los temas de tu interés</string>
 
     <!-- variables para logueo de facebook-->
 

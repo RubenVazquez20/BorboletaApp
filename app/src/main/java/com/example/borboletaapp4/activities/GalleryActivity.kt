@@ -166,7 +166,7 @@ class GalleryActivity : AppCompatActivity(),CardStackListener {
                         arrProf.add(
                             profesional(
                                 document.data.getValue("nombre") as String,
-                                document.data.getValue("apellidoPaterno") as String,
+                                document.data.getValue("apellido") as String,
                                 document.data.getValue("rol") as String,
                                 document.data.getValue("filtros") as ArrayList<String>
                             )
