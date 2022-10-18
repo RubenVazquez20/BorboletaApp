@@ -4,8 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.borboletaapp4.RegistrationActivity
-import com.example.borboletaapp4.SignInActivity
 import com.example.borboletaapp4.databinding.ActivityCheckEmailBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
