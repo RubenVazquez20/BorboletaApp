@@ -23,8 +23,8 @@ class RevistaActivity : AppCompatActivity() {
         }
 
         // Variables Web View
-        val titulo = "Youtube"
-        val link = "https://www.youtube.com/"
+        val titulo = "Depresión y ansiedad en tiempos de post pandemia"
+        val link = "https://www.borboletamx.com/depresiony-ansiedadentiemposdepostpandemia"
 
         // Configuración de campos de texto
         val encabezado = findViewById<TextView>(R.id.txtv_encabezado)

@@ -172,7 +172,7 @@
         android:layout_width="match_parent"
         android:layout_height="125dp"
         android:layout_marginHorizontal="25dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:elevation="8dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="12dp"
@@ -267,14 +267,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
+                android:fontFamily="@font/inter"
                 android:singleLine="true"
                 android:text="17:00 Hrs"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:fontFamily="@font/inter"/>
+                app:layout_constraintEnd_toEndOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
@@ -298,7 +298,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_carouselContainer"
         android:layout_width="match_parent"
-        android:layout_height="115dp"
+        android:layout_height="150dp"
         android:layout_marginHorizontal="25dp"
         android:layout_marginTop="25dp"
         android:elevation="8dp"
@@ -318,7 +318,8 @@
             app:bottomShadowHeight="64dp"
             app:captionMargin="10dp"
             app:captionTextSize="14sp"
-            app:showBottomShadow="true"
+            app:showCaption="false"
+            app:showBottomShadow="false"
             app:showIndicator="false"
             app:showNavigationButtons="false"
             app:showTopShadow="false"

@@ -131,7 +131,8 @@ class SignInActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Log.d("TAG", "signInWithEmail:success")
-                    reload()
+                    val intent = Intent(this, HomeActivity::class.java)
+                    this.startActivity(intent)
                 } else {
                     Log.w("TAG", "signInWithEmail:failure", task.exception)
                     Toast.makeText(baseContext, "Email o contraseña o incorrectos.",
