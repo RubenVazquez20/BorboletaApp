@@ -70,6 +70,45 @@ dependencies {
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-firestore-ktx'
 
+    //Implementación de Glide
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:2.0.4'
+    implementation 'com.github.bumptech.glide:glide:4.13.1' // Glide
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0' // Glide
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    /*
+    Reservación de lugares siempre va primero
+    3 tecfoods con Karlita o Rosario para negociar su entrada
+    Espacio para el dj
+    considerar el riesgo de las zonas de riesgo
+    Probablemente unifilas para tecfoods eso depende por completo de la posición que les demos
+    Posible invitación de Rocha
+    Posibles juegos mecánicos o inflables
+    Pedir lona o protección contra lluvia a los stands u objetivos expuestos a posible lluvia
+    Alterar la iluminación del pasillo central para que sea más tenue o por completo a oscuras
+    en algunas zonas.
+    staff para cuidar cada una de las zonas
+    usar radios
+    unifilas para bloquear escaleras o zonas de riesgo en caso de ser asustadxs o no ver muy bien
+    pedir centros de control para colocar material audiovisual alucivo a la fiesta en zonas semi oscuras
+    repartir cada uno de los subeventos a los integrantes del team actual
+
+    Biblioteca se encargará de lo de calaveritas literarias
+    Decoración de la fiesta
+    Ofrenda general
+    tenemos presencia de 7 comunidades
+    predsentación de arte y cultura? enviar correo con una propuesta ya pklanteada.
+
+
+
+
+
+    * */
 
 
     testImplementation 'junit:junit:4.13.2'

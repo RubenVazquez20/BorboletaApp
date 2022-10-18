@@ -8,6 +8,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import com.example.borboletaapp4.R
+import com.example.borboletaapp4.databinding.ActivityConfigurationBinding
+import com.example.borboletaapp4.databinding.ActivityHomeBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import org.imaginativeworld.whynotimagecarousel.ImageCarousel
 import org.imaginativeworld.whynotimagecarousel.listener.CarouselListener
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem
@@ -16,10 +22,25 @@ class HomeActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
 
     private var list = mutableListOf<CarouselItem>()
+    //Atributos para llamar a firebase
+    private lateinit var auth: FirebaseAuth
+    private lateinit var binding: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        auth = Firebase.auth
+        //Métodos
+
+        val currentUser = auth.currentUser
+        //val uid = currentUser!!.uid
+        val db = Firebase.firestore
+
+        db.collection("userData").document(auth.currentUser?.email.toString()).get().addOnSuccessListener {
+            binding.tvBienvenida.text = "Hola " + (it.get("nombre") as String?)
+        }
 
         // Variables Saludo
         val saludo = findViewById<TextView>(R.id.tv_bienvenida)
