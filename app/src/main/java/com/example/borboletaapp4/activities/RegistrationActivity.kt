@@ -229,4 +229,3 @@ class RegistrationActivity : AppCompatActivity() {
 
 
 } //cierre de la clase
-

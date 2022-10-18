@@ -69,7 +69,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/gradient_psic">
+            android:background="@drawable/gradient_mentor">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardv_circleframe1"
@@ -119,6 +119,49 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/imgv_heart"
                 app:layout_constraintTop_toBottomOf="@+id/cardv_circleframe1" />
+
+            <TextView
+                android:id="@+id/txtv_fechacita"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/inter"
+                android:text="Lunes, 17 de Octubre"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtv_nombre1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="20dp"
+                android:text="Dr. Rubén Vázquez"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtv_fechacita" />
+
+            <TextView
+                android:id="@+id/txtv_horacita"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:singleLine="true"
+                android:text="18:00 Hrs"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:fontFamily="@font/inter"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -189,6 +232,49 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/imgv_star"
                 app:layout_constraintTop_toBottomOf="@+id/cardView3" />
+
+            <TextView
+                android:id="@+id/txtv_fechacita2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/inter"
+                android:text="Martes, 18 de Octubre"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtv_nombre2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="20dp"
+                android:text="Dr. Jesús Jiménez"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtv_fechacita2" />
+
+            <TextView
+                android:id="@+id/txtv_horacita2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:singleLine="true"
+                android:text="17:00 Hrs"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:fontFamily="@font/inter"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
@@ -235,7 +321,8 @@
             app:showBottomShadow="true"
             app:showIndicator="false"
             app:showNavigationButtons="false"
-            app:showTopShadow="false" />
+            app:showTopShadow="false"
+            tools:ignore="MissingClass" />
 
     </androidx.cardview.widget.CardView>
 

@@ -7,6 +7,10 @@ import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.borboletaapp4.activities.AccountRecoveryActivity
+import com.example.borboletaapp4.activities.CheckEmailActivity
+import com.example.borboletaapp4.activities.MainActivity
+import com.example.borboletaapp4.activities.SignUpActivity
 import com.example.borboletaapp4.databinding.ActivitySignInBinding
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
