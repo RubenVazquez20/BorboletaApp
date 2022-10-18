@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_alarm"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="5dp"
+    app:contentPadding="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+        <RelativeLayout
+            android:id="@+id/alarm_RelativeLayout_time"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/alarm_LinearLayout_Buttons">
+            <TextView
+                android:id="@+id/alarm_txt_TimeStamp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="13:00"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/alarm_Switch_EnableAlarm"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/alarm_LinearLayout_Buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:showDividers="middle"
+            app:layout_constraintTop_toBottomOf="@id/alarm_RelativeLayout_time">
+            <ToggleButton
+                android:id="@+id/alarm_ToggleButton_1hr"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textOn="1 Hr"
+                android:textOff="1 Hr"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <ToggleButton
+                android:id="@+id/alarm_ToggleButton_30min"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textOff="30 min"
+                android:textOn="30 min"
+                android:layout_marginHorizontal="15dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <ToggleButton
+                android:id="@+id/alarm_ToggleButton_10min"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textOn="10 min"
+                android:textOff="10 min"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
