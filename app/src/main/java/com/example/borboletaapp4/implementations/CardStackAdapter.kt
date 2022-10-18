@@ -18,8 +18,8 @@ class CardStackAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val card = cards[position]
-        holder.name.text = "${card.id}. ${card.name}"
-        holder.role.text = card.role
+        holder.name.text = "${card.name}"
+        holder.role.text = card.role.uppercase()
         holder.description.text = card.description
         holder.image.setImageDrawable(card.image)
     }

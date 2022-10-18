@@ -1,9 +1,12 @@
 package com.example.borboletaapp4.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.animation.LinearInterpolator
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
@@ -26,12 +29,22 @@ class GalleryActivity : AppCompatActivity(),CardStackListener {
     private val adapter by lazy { CardStackAdapter(createCards()) }
     private var arrProf = arrayListOf<profesional>()
     private var filterMap = hashMapOf<String, ArrayList<Int>>()
+    private var selectedFilters = arrayListOf<String>()
+    private var currentProf = arrayListOf<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gallery)
         setupCardStackView()
         readData()
+        selectedFilters = intent.getStringArrayListExtra("selectedFilters") as ArrayList<String>
+        println(selectedFilters)
+
+        val button: ImageButton = findViewById(R.id.backtoconf)
+        button.setOnClickListener{
+            val intent2 = Intent(this@GalleryActivity, FilterActivity::class.java)
+            startActivity(intent2)
+        }
     }
     override fun onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -139,11 +152,17 @@ class GalleryActivity : AppCompatActivity(),CardStackListener {
 
     private fun createCards(): List<card> {
         val cards = ArrayList<card>()
+        for(pos in currentProf){
+            cards.add(card(name="${arrProf[pos].nombre} ${arrProf[pos].apellido}",
+                role = arrProf[pos].rol,
+                description = "This is a template description",
+                image=ResourcesCompat.getDrawable(resources, R.drawable.ejemplo1, null)!!))
+        }
         for (info in arrProf){
             cards.add(card(name="${info.nombre} ${info.apellido}",
-                            role = info.rol,
-                            description = "This is a template description",
-                            image=ResourcesCompat.getDrawable(resources, R.drawable.ejemplo1, null)!!))
+                role = info.rol,
+                description = "This is a template description",
+                image=ResourcesCompat.getDrawable(resources, R.drawable.ejemplo1, null)!!))
         }
         /*
         cards.add( card(
@@ -160,7 +179,7 @@ class GalleryActivity : AppCompatActivity(),CardStackListener {
         db.collection("profesionales").whereNotEqualTo("rol", "user")
             .get().addOnCompleteListener {
                 var cont = 0
-
+                var filterMapAux = hashMapOf<String, ArrayList<Int>>()
                 if (it.isSuccessful) {
                     for (document in it.result!!) {
                         arrProf.add(
@@ -174,18 +193,33 @@ class GalleryActivity : AppCompatActivity(),CardStackListener {
                         val arrFiltros: ArrayList<String>? =
                             document.data.getValue("filtros") as? ArrayList<String>?
                         for (element in arrFiltros!!) {
-                            if (filterMap.containsKey(element)) {
-                                var aux = filterMap[element]!!
+                            if (filterMapAux.containsKey(element)) {
+                                var aux = filterMapAux[element]!!
                                 aux.add(cont)
-                                filterMap[element] = aux
+                                filterMapAux[element] = aux
                             } else {
-                                filterMap[element] = arrayListOf<Int>(cont)
+                                filterMapAux[element] = arrayListOf<Int>(cont)
                             }
                         }
                         cont += 1
                     }
+                    filterMap = filterMapAux
+                    currentProf = filterProf(selectedFilters)
                     paginate()
                     reload()
-                }}}
+                }
+
+            }
+    }
+
+    private fun filterProf(selectedFilters: ArrayList<String>): ArrayList<Int> {
+        var res = arrayListOf<Int>()
+        for(fil in selectedFilters){
+            if(filterMap.containsKey(fil)){
+                res.addAll(filterMap.get(fil)!!)
+            }
+        }
+        return res
+    }
 
 }

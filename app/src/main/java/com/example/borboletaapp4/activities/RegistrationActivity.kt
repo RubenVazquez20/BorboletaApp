@@ -115,6 +115,7 @@ class RegistrationActivity : AppCompatActivity() {
             val gender = binding.gender.selectedItem.toString()
             val pronoun = binding.pronoun.selectedItem.toString()
             val rol = "user"
+            val filtros = arrayListOf<String>()
 
             if (nombre.isNotEmpty() && apellidoPaterno.isNotEmpty() && apellidoMaterno.isNotEmpty() && DD_registration.isNotEmpty() && MM_registration.isNotEmpty() && AAAA_registration.isNotEmpty() && gender.isNotEmpty() && pronoun.isNotEmpty() ) {
                 registrarUsuario(
@@ -126,7 +127,8 @@ class RegistrationActivity : AppCompatActivity() {
                     AAAA_registration,
                     gender,
                     pronoun,
-                    rol
+                    rol,
+                    filtros
                 )
             } else {
                 Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show()
@@ -163,6 +165,7 @@ class RegistrationActivity : AppCompatActivity() {
         gender: String,
         pronoun: String,
         rol: String,
+        filtros: ArrayList<String>
     ) {
 
 
@@ -179,7 +182,8 @@ class RegistrationActivity : AppCompatActivity() {
                         "AAAA_registration" to AAAA_registration,
                         "gender" to gender,
                         "pronoun" to pronoun,
-                        "rol" to rol
+                        "rol" to rol,
+                        "filtros" to filtros
                     )
 
                     val db = Firebase.firestore

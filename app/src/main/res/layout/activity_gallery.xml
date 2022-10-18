@@ -41,6 +41,17 @@
                 android:textColor="@color/purple_borboleta"
                 android:textSize="24sp"
                 android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/backtoconf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="29dp"
+                android:layout_marginEnd="36dp"
+                android:background="#fff"
+                app:srcCompat="@drawable/ic_conf" />
         </RelativeLayout>
 
         <!-- Ver otros expertos (función del finder) -->
@@ -84,19 +95,6 @@
                 android:background="@drawable/bottoncorners"
                 android:backgroundTint="@color/purple_borboleta"
                 app:srcCompat="@drawable/check" />
-
-            <TextView
-                android:id="@+id/tvOtherFirst"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="20dp"
-                android:fontFamily="serif"
-                android:text="Ver otros expertos"
-                android:textColor="@color/lightpurple_borboleta"
-                android:textSize="14dp"
-                android:textStyle="bold" />
 
         </RelativeLayout>
 
