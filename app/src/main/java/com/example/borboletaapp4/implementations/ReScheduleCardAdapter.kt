@@ -7,10 +7,17 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.borboletaapp4.R
+import com.example.borboletaapp4.models.card
+import com.example.borboletaapp4.models.schedule
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 
 class ReScheduleCardAdapter:RecyclerView.Adapter<ReScheduleCardAdapter.ViewHolder>() {
     private var exact = arrayOf("Viernes 07 ","Sabado 08","Domingo 09")
     private var month = arrayOf("Febrero 2022","Febrero 2022","Febrero 2022")
+    //private var exact = emptyArray<String>()
+    //private var month = emptyArray<String>()
+    //private var scheduleList = listOf<schedule>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.schedule_card,parent,false)
@@ -18,6 +25,7 @@ class ReScheduleCardAdapter:RecyclerView.Adapter<ReScheduleCardAdapter.ViewHolde
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        //var arrsch = scheduleList[position]
         holder.exactDate.text=exact[position]
         holder.monthDate.text=month[position]
         holder.timeRecyView.adapter=TimeScheduleAdapter()
@@ -39,5 +47,13 @@ class ReScheduleCardAdapter:RecyclerView.Adapter<ReScheduleCardAdapter.ViewHolde
         }
     }
 
+    /*fun setCards(spots: List<schedule>) {
+        this.scheduleList = spots
+    }
+
+    fun getCards(): List<schedule> {
+        println(scheduleList)
+        return scheduleList
+    }*/
 
 }

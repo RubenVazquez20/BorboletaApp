@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/ReSchedule_relaLay_Statusbar"
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+            <TextView
+                android:id="@+id/ReSchedule_txt_ViewName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="65dp"
+                android:text="Terapia"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+            <ImageView
+                android:id="@+id/ReSchedule_img_Logo"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/first" />
+        </RelativeLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/ReSchedule_linLay_Buttons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/ReSchedule_txt_Reagendar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Agendar"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                    <TextView
+                        android:id="@+id/ReSchedule_txt_Reagendarsubtext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Horarios disponibles"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/Reschedule_recyclerView_Schedule"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                    <TextView
+                        android:id="@+id/ReSchedule_txt_Alarma"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Alarma"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/ReSchedule_recyclerView_Alarm"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

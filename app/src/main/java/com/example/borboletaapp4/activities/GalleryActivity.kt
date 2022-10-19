@@ -45,6 +45,11 @@ class GalleryActivity : AppCompatActivity(),CardStackListener {
             val intent2 = Intent(this@GalleryActivity, FilterActivity::class.java)
             startActivity(intent2)
         }
+            val button2: ImageButton = findViewById(R.id.ibCheckFirst)
+        button2.setOnClickListener{
+            val intent3 = Intent(this@GalleryActivity, ScheduleActivity::class.java)
+            startActivity(intent3)
+        }
     }
     override fun onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -113,7 +118,7 @@ class GalleryActivity : AppCompatActivity(),CardStackListener {
         manager.setScaleInterval(0.95f)
         manager.setSwipeThreshold(0.7f)
         manager.setMaxDegree(20.0f)
-        manager.setDirections(Direction.FREEDOM)
+        manager.setDirections(Direction.HORIZONTAL)
         manager.setCanScrollHorizontal(true)
         manager.setCanScrollVertical(true)
         manager.setSwipeableMethod(SwipeableMethod.Manual)
@@ -155,14 +160,14 @@ class GalleryActivity : AppCompatActivity(),CardStackListener {
         for(pos in currentProf){
             cards.add(card(name="${arrProf[pos].nombre} ${arrProf[pos].apellido}",
                 role = arrProf[pos].rol,
-                description = "This is a template description",
+                description = arrProf[pos].filtros.joinToString(separator = ", ", postfix = ". "),
                 image=ResourcesCompat.getDrawable(resources, R.drawable.ejemplo1, null)!!))
         }
         for (info in arrProf){
             cards.add(card(name="${info.nombre} ${info.apellido}",
                 role = info.rol,
-                description = "This is a template description",
-                image=ResourcesCompat.getDrawable(resources, R.drawable.ejemplo1, null)!!))
+                description = info.filtros.joinToString(separator = ", ", postfix = ". "),
+                image=ResourcesCompat.getDrawable(resources, R.drawable.ejemplo2, null)!!))
         }
         /*
         cards.add( card(
