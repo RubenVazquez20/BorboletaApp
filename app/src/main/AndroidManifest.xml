@@ -41,6 +41,7 @@
         <activity android:name=".activities.SignUpActivity" />
         <activity android:name=".activities.SignInActivity" />
         <activity android:name=".activities.GalleryActivity" />
+        <activity android:name=".activities.ScheduleActivity" />
         <activity
             android:name=".activities.MainActivity"
             android:theme="@style/Theme.Main" />
@@ -53,7 +54,6 @@
         <activity
             android:name=".activities.FilterActivity"
             android:exported="false" />
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" /> <!-- meta-data para logueo con facebook -->
