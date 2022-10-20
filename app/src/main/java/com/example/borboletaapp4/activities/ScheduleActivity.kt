@@ -1,6 +1,8 @@
 package com.example.borboletaapp4.activities
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -35,6 +37,32 @@ class ScheduleActivity:AppCompatActivity() {
         alarmAdapter= AlarmCardAdapter()
         scheduleRecyclerView.adapter = scheduleAdapter
         alarmRecyclerView.adapter=alarmAdapter
+
+
+        //Navbar
+        val btnHome1: ImageButton = findViewById(R.id.btnHome1)
+        btnHome1.setOnClickListener {
+            val intent = Intent(this,HomeActivity::class.java)
+            startActivity(intent)
+        }
+
+        /*val btnChat1: ImageButton = findViewById(R.id.btnChat1)
+        btnChat1.setOnClickListener {
+            val intent = Intent(this,Chat::class.java)
+            startActivity(intent)
+        }*/
+
+        val btnConfig1: ImageButton = findViewById(R.id.btnConfig1)
+        btnConfig1.setOnClickListener {
+            val intent = Intent(this,ConfigurationActivity::class.java)
+            startActivity(intent)
+        }
+
+        val btnReagendar1: ImageButton = findViewById(R.id.btnReagendar1)
+        btnReagendar1.setOnClickListener {
+            val intent = Intent(this,ScheduleActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     //private fun createSchCards(): List<String>{

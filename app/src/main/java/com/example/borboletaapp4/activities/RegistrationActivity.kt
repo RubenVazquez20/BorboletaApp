@@ -2,7 +2,9 @@ package com.example.borboletaapp4.activities
 
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -13,14 +15,19 @@ import com.example.borboletaapp4.R
 import com.example.borboletaapp4.databinding.ActivityRegistrationBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+
 
 class RegistrationActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityRegistrationBinding
     lateinit var datePickerDialog: DatePickerDialog
+    private val fileResult = 1
 
     val daysRegistration = arrayOf("DD","01","02","03","04","05","06","07","08","09","10","11","12","13",
         "14","15","16","17","18","19","20","21","22","23","24","25","26",
@@ -30,7 +37,7 @@ class RegistrationActivity : AppCompatActivity() {
         "Septiembre","Octubre","Noviembre","Diciembre")
 
     val yearsRegistration = arrayOf("AAAA","1990","1991","1992","1993","1994","1995","1996","1997","1998",
-        "1999","2000")
+        "1999","2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009")
 
     val genderRegistration = arrayOf("Género","Hombre", "Mujer", "Otro")
 
@@ -99,25 +106,20 @@ class RegistrationActivity : AppCompatActivity() {
         }
 
 
-
-
         //Función para enviar los datos registrados
         binding.registerButton.setOnClickListener {
             val nombre = binding.nameRegistration.text.toString()
             val apellidoPaterno = binding.lastNameFRegistration.text.toString()
             val apellidoMaterno = binding.lastNameMRegistration.text.toString()
-            //val telefono = binding.spinner.spinner.toString()
             val DD_registration = binding.spinner.selectedItem.toString()
-            //val genero = binding.spinner2.text.toString()
             val MM_registration = binding.spinner2.selectedItem.toString()
-            //val fechanac = binding.spinner3.text.toString()
             val AAAA_registration = binding.spinner3.selectedItem.toString()
-            val gender = binding.gender.selectedItem.toString()
-            val pronoun = binding.pronoun.selectedItem.toString()
+            val gende = binding.gender.selectedItem.toString()
+            val pronou = binding.pronoun.selectedItem.toString()
             val rol = "user"
-            val filtros = arrayListOf<String>()
 
-            if (nombre.isNotEmpty() && apellidoPaterno.isNotEmpty() && apellidoMaterno.isNotEmpty() && DD_registration.isNotEmpty() && MM_registration.isNotEmpty() && AAAA_registration.isNotEmpty() && gender.isNotEmpty() && pronoun.isNotEmpty() ) {
+
+            if (nombre.isNotEmpty() && apellidoPaterno.isNotEmpty() && apellidoMaterno.isNotEmpty() && DD_registration.isNotEmpty() && MM_registration.isNotEmpty() && AAAA_registration.isNotEmpty() && gende.isNotEmpty() && pronou.isNotEmpty() && rol.isNotEmpty()) {
                 registrarUsuario(
                     nombre,
                     apellidoPaterno,
@@ -125,21 +127,20 @@ class RegistrationActivity : AppCompatActivity() {
                     DD_registration,
                     MM_registration,
                     AAAA_registration,
-                    gender,
-                    pronoun,
-                    rol,
-                    filtros
+                    gende,
+                    pronou,
+                    rol
                 )
+
             } else {
                 Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show()
             }
         }
 
-        //Agregar direccionamiento hacia la pantalla de filtrado
-        binding.registerButton.setOnClickListener {
-            val intent = Intent(this, AllSetActivity::class.java)
-            this.startActivity(intent)
+        binding.imageLoad.setOnClickListener {
+            fileManager()
         }
+
 
     } //cierre de área de métodos y atributos
 
@@ -162,56 +163,80 @@ class RegistrationActivity : AppCompatActivity() {
         DD_registration: String,
         MM_registration: String,
         AAAA_registration: String,
-        gender: String,
-        pronoun: String,
-        rol: String,
-        filtros: ArrayList<String>
+        gende: String,
+        pronou: String,
+        rol: String
     ) {
+        val user = auth.currentUser
+        val uid = user!!.uid
+        val map = hashMapOf(
+            "nombre" to nombre,
+            "apellidoPaterno" to apellidoPaterno,
+            "apellidoMaterno" to apellidoMaterno,
+            "DD_registration" to DD_registration,
+            "MM_registration" to MM_registration,
+            "AAAA_registration" to AAAA_registration,
+            "gender" to gende,
+            "pronoun" to pronou,
+            "rol" to rol
+        )
 
+        val db = Firebase.firestore
 
-                    val user = auth.currentUser
+        db.collection("userData").document(auth.currentUser?.email.toString()).set(map).addOnSuccessListener {
+            infoUser()
+            Toast.makeText(this, "Usuario Registrado", Toast.LENGTH_SHORT).show()
 
-                    val uid = user!!.uid
-
-                    val map = hashMapOf(
-                        "nombre" to nombre,
-                        "apellidoPaterno" to apellidoPaterno,
-                        "apellidoMaterno" to apellidoMaterno,
-                        "DD_registration" to DD_registration,
-                        "MM_registration" to MM_registration,
-                        "AAAA_registration" to AAAA_registration,
-                        "gender" to gender,
-                        "pronoun" to pronoun,
-                        "rol" to rol,
-                        "filtros" to filtros
-                    )
-
-                    val db = Firebase.firestore
-
-                    db.collection("userData").document(auth.currentUser?.email.toString()).set(map).addOnSuccessListener {
-                        //infoUser()
-                        Toast.makeText(this, "Usuario Registrado", Toast.LENGTH_SHORT).show()
-
-                    }
-                        .addOnFailureListener {
-                            Toast.makeText(
-                                this,
-                                "Fallo al guardar la informacion",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                }
+        }
+            .addOnFailureListener {
+                Toast.makeText(
+                    this,
+                    "Fallo al guardar la informacion",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+    }
 
 
     private fun infoUser() {
-        val infoUserIntent = Intent(this, ConfigurationActivity::class.java)
-        startActivity(infoUserIntent)
-
+            val intent = Intent(this, AllSetActivity::class.java)
+            this.startActivity(intent)
     }
 
 
     private fun reload() {
 
+    }
+
+    //Funciones para imagenes de usuario con Glide
+    private fun fileManager() {
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.type = "image/*"
+        startActivityForResult(intent, fileResult)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == fileResult) {
+            if (resultCode == RESULT_OK && data != null) {
+                val uri = data.data
+                uri?.let { imageUpload(it) }
+            }
+        }
+    }
+
+    private fun imageUpload(mUri: Uri) {
+        val user = auth.currentUser
+        val folder: StorageReference = FirebaseStorage.getInstance().reference.child("Users")
+        val fileName: StorageReference = folder.child("img"+auth.currentUser?.email.toString())
+        fileName.putFile(mUri).addOnSuccessListener {
+            fileName.downloadUrl.addOnSuccessListener { uri ->
+                val profileUpdates = userProfileChangeRequest {
+                    photoUri = Uri.parse(uri.toString())
+                }
+            }
+        }
     }
 
 

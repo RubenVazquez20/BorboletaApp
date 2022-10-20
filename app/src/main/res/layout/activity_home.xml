@@ -44,7 +44,7 @@
         android:fontFamily="@font/pt_serif"
         android:text="Acompañamiento"
         android:textColor="#3D3B8E"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/tv_bienvenida"
         app:layout_constraintHorizontal_bias="0.0"
@@ -56,7 +56,7 @@
         android:layout_width="match_parent"
         android:layout_height="125dp"
         android:layout_marginHorizontal="25dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:elevation="8dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="12dp"
@@ -280,16 +280,18 @@
 
     </androidx.cardview.widget.CardView>
 
+
     <TextView
         android:id="@+id/tv_revista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/pt_serif"
         android:text="Artículos destacados"
         android:textColor="#3D3B8E"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -301,10 +303,12 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginHorizontal="25dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:elevation="8dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/navbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_revista">
@@ -319,14 +323,80 @@
             app:bottomShadowHeight="64dp"
             app:captionMargin="10dp"
             app:captionTextSize="14sp"
-            app:showCaption="false"
             app:showBottomShadow="false"
+            app:showCaption="false"
             app:showIndicator="false"
             app:showNavigationButtons="false"
             app:showTopShadow="false"
             tools:ignore="MissingClass" />
 
     </androidx.cardview.widget.CardView>
+
+    <!-- Navbar-->
+    <LinearLayout
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_carouselContainer"
+        app:layout_constraintVertical_bias="1.0">
+
+        <ImageButton
+            android:id="@+id/btnHome1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="9dp"
+            android:backgroundTint="@color/purple_700"
+            android:padding="12dp"
+            android:src="@drawable/ic_homenav"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/white" />
+
+        <ImageButton
+            android:id="@+id/btnChat1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="9dp"
+            android:backgroundTint="@color/purple_700"
+            android:padding="12dp"
+            android:src="@drawable/ic_chatnav"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/white" />
+
+        <ImageButton
+            android:id="@+id/btnReagendar1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="9dp"
+            android:backgroundTint="@color/purple_700"
+            android:padding="12dp"
+            android:src="@drawable/ic_doctornav"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/white" />
+
+        <ImageButton
+            android:id="@+id/btnConfig1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="9dp"
+            android:backgroundTint="@color/purple_700"
+            android:gravity="center" />
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,15 +42,15 @@
         <activity android:name=".activities.SignInActivity" />
         <activity android:name=".activities.GalleryActivity" />
         <activity android:name=".activities.ScheduleActivity" />
+        <activity android:name=".activities.RescheduleActivity"/>
+        <activity android:name=".activities.AllSetActivity"/>
         <activity
             android:name=".activities.MainActivity"
             android:theme="@style/Theme.Main" />
         <activity
             android:name=".activities.HomeActivity"
             android:exported="false" />
-        <activity
-            android:name=".activities.RegistrationActivity"
-            android:exported="false" />
+        <activity android:name=".activities.RegistrationActivity" />
         <activity
             android:name=".activities.FilterActivity"
             android:exported="false" />

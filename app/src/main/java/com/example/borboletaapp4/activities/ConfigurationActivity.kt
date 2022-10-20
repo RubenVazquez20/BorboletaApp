@@ -3,12 +3,15 @@ package com.example.borboletaapp4.activities
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
+import com.example.borboletaapp4.R
 import com.example.borboletaapp4.databinding.ActivityConfigurationBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
+@Suppress("DEPRECATION")
 class ConfigurationActivity : AppCompatActivity() {
 
     //Atributos para llamar a firebase
@@ -34,8 +37,8 @@ class ConfigurationActivity : AppCompatActivity() {
             binding.DDUserData.text = (it.get("DD_registration") as String?)
             binding.MMUserData.text = (it.get("MM_registration") as String?)
             binding.AAAAUserData.text = (it.get("AAAA_registration") as String?)
-            binding.genderUserData.text = (it.get("gender") as String?)
-            binding.pronounUserData.text = (it.get("pronoun") as String?)
+            binding.genderUserData.text = (it.get("gende") as String?)
+            binding.pronounUserData.text = (it.get("pronou") as String?)
         }
 
 
@@ -50,6 +53,8 @@ class ConfigurationActivity : AppCompatActivity() {
         binding.signOutButon.setOnClickListener {
             cerrarSesion()
         }
+
+        userImage()
 
     }
 
@@ -75,6 +80,22 @@ class ConfigurationActivity : AppCompatActivity() {
     }
 
     private fun reload() {
+
+    }
+
+    //Funcion de imageUser
+    fun userImage () {
+        val user = auth.currentUser
+
+
+        if (user != null) {
+            Glide
+                .with(this)
+                .load(user.photoUrl)
+                .centerCrop()
+                .placeholder(R.drawable.first)
+                .into(binding.imageView2)
+        }
 
     }
 }

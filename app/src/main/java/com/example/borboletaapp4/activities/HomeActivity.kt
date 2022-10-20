@@ -3,6 +3,7 @@ package com.example.borboletaapp4.activities
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -19,7 +20,6 @@ import org.imaginativeworld.whynotimagecarousel.listener.CarouselListener
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem
 
 class HomeActivity : AppCompatActivity() {
-    @SuppressLint("SetTextI18n")
 
     private var list = mutableListOf<CarouselItem>()
     //Atributos para llamar a firebase
@@ -47,9 +47,9 @@ class HomeActivity : AppCompatActivity() {
         val pronombre = "él"
         val nombre = "Óscar"
         when(pronombre){
-            "él" -> saludo.text = "Bienvenido $nombre"
-            "ella" -> saludo.text = "Bienvenida $nombre"
-            "elle" -> saludo.text = "Bienvenide $nombre"
+            "El" -> saludo.text = "Bienvenido $nombre"
+            "Ella" -> saludo.text = "Bienvenida $nombre"
+            "Elle" -> saludo.text = "Bienvenide $nombre"
         }
 
         // Tarjeta de acompañamiento emocional y mentoría
@@ -71,6 +71,33 @@ class HomeActivity : AppCompatActivity() {
             }
         }
         carousel.addData(list)
+
+
+        //Navbar
+        val btnHome1: ImageButton = findViewById(R.id.btnHome1)
+        btnHome1.setOnClickListener {
+            val intent = Intent(this,HomeActivity::class.java)
+            startActivity(intent)
+        }
+
+        /*val btnChat1: ImageButton = findViewById(R.id.btnChat1)
+        btnChat1.setOnClickListener {
+            val intent = Intent(this,Chat::class.java)
+            startActivity(intent)
+        }*/
+
+        val btnConfig1: ImageButton = findViewById(R.id.btnConfig1)
+        btnConfig1.setOnClickListener {
+            val intent = Intent(this,ConfigurationActivity::class.java)
+            startActivity(intent)
+        }
+
+        val btnReagendar1: ImageButton = findViewById(R.id.btnReagendar1)
+        btnReagendar1.setOnClickListener {
+            val intent = Intent(this,ScheduleActivity::class.java)
+            startActivity(intent)
+        }
+
     }
     private fun revista(url: String){
         val intent = Intent(this,RevistaActivity::class.java)

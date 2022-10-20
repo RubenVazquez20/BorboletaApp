@@ -76,5 +76,30 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linearLayoutb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Container_palomita"
+        app:layout_constraintVertical_bias="0.742">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/botonListo"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_buttom"
+            android:paddingLeft="64dp"
+            android:paddingRight="64dp"
+            android:text="@string/register"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
 
 </androidx.constraintlayout.motion.widget.MotionLayout>
