@@ -12,6 +12,8 @@ import android.widget.TextView
 import com.example.borboletaapp4.R
 
 class RevistaActivity : AppCompatActivity() {
+
+    private var link: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_revista)
@@ -22,13 +24,12 @@ class RevistaActivity : AppCompatActivity() {
             backToHome()
         }
 
-        // Variables Web View
-        val titulo = "Depresión y ansiedad en tiempos de post pandemia"
-        val link = "https://www.borboletamx.com/depresiony-ansiedadentiemposdepostpandemia"
+        intent.extras?.let{ bundle ->
+            link = bundle.getString("link")?: "https://borboletamx.com/"
+
+        }
 
         // Configuración de campos de texto
-        val encabezado = findViewById<TextView>(R.id.txtv_encabezado)
-        encabezado.text = titulo
         val enlace = findViewById<TextView>(R.id.txtv_enlace)
         enlace.text = link
 

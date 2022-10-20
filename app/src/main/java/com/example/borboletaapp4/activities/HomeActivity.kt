@@ -58,22 +58,23 @@ class HomeActivity : AppCompatActivity() {
 
         // Artículos de carousel
         val carousel: ImageCarousel = findViewById(R.id.carousel_revista)
-        list.add(CarouselItem("https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,h=360,fit=crop/AR00Q0oo5WcJbPGn/artaculo-mjE0bQ3eNOIOZQBL.jpg", "La simplicidad de un círculo"))
-        list.add(CarouselItem("https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=861,h=517,fit=crop/AR00Q0oo5WcJbPGn/2-AVLG1ZgRvluyPyZb.png", "Depresión y ansiedad en tiempos de post pandemia"))
-        list.add(CarouselItem("https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=861,h=517,fit=crop/AR00Q0oo5WcJbPGn/3-mp8zqgg59BHGr8Pr.png", "Lobos y emprendedores"))
-        list.add(CarouselItem("https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=861,h=517,fit=crop/AR00Q0oo5WcJbPGn/portadas-de-articulos-2-m2W55nZyZNh1eGZV.jpg", "Emprendedores sociales, ¿los nuevos súper héroes?"))
-        list.add(CarouselItem("https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=861,h=517,fit=crop/AR00Q0oo5WcJbPGn/portadas-de-articulos-AoPykRk91ZCo4wbD.jpg", "LA ANSIEDAD EN LOS UNIVERSITARIOS: ¿Cómo detectarla?\n"))
+        list.add(CarouselItem("https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,h=360,fit=crop/AR00Q0oo5WcJbPGn/artaculo-mjE0bQ3eNOIOZQBL.jpg", "https://www.borboletamx.com/la-simplicidad-de-un-circulo"))
+        list.add(CarouselItem("https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=861,h=517,fit=crop/AR00Q0oo5WcJbPGn/2-AVLG1ZgRvluyPyZb.png", "https://www.borboletamx.com/depresiony-ansiedadentiemposdepostpandemia"))
+        list.add(CarouselItem("https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=861,h=517,fit=crop/AR00Q0oo5WcJbPGn/3-mp8zqgg59BHGr8Pr.png", "https://www.borboletamx.com/lobosyemprendedores"))
+        list.add(CarouselItem("https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=861,h=517,fit=crop/AR00Q0oo5WcJbPGn/portadas-de-articulos-2-m2W55nZyZNh1eGZV.jpg", "https://www.borboletamx.com/emprendedores-sociales-los-nuevos-super-heroes"))
+        list.add(CarouselItem("https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=861,h=517,fit=crop/AR00Q0oo5WcJbPGn/portadas-de-articulos-AoPykRk91ZCo4wbD.jpg", "https://www.borboletamx.com/ansiedad-en-los-universitarios"))
 
         // Carousel listener
         carousel.carouselListener = object : CarouselListener {
             override fun onClick(position: Int, carouselItem: CarouselItem) {
-                revista()
+                carouselItem.caption?.let { revista(it) }
             }
         }
         carousel.addData(list)
     }
-    private fun revista(){
+    private fun revista(url: String){
         val intent = Intent(this,RevistaActivity::class.java)
+        intent.putExtra("link",url)
         startActivity(intent)
     }
 }

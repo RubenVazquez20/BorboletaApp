@@ -7,9 +7,9 @@
     <string name="name">Nombre completo</string>
     <string name="email">Correo</string>
     <string name="user">Usuario</string>
-    <string name="login">Login</string>
+    <string name="login">Iniciar sesión</string>
     <string name="repeat_password">Confirma la contraseña</string>
-    <string name="signup">Sign Up</string>
+    <string name="signup">Registrarse</string>
     <string name="text_signup">No tienes cuenta?</string>
     <string name="link_signup">Sin up</string>
     <string name="ingresarcongoogle">Ingresar con</string>
@@ -31,7 +31,7 @@
     <string name="title_delete_account">Eliminar cuenta</string>
     <string name="subtitle_delete_account">Por motivos de seguridad para eliminar tu cuenta por completo, debes de ingresar tu contraseña.</string>
     <string name="delete">Eliminar</string>
-    <string name="pie_splash">Lorem ipsum dolor sit amet, consectetur\nadipiscing elit. Praesent non nisi at turpis\nhendrerit gravida.</string>
+    <string name="pie_splash">Todos los derechos reservados</string>
     <string name="buttom_continue">Continue</string>
     <string name="nameRegistration">Nombre(s)</string>
     <string name="lastNameFRegistration">Apellido Paterno</string>
