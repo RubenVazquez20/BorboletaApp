@@ -94,7 +94,7 @@ class HomeActivity : AppCompatActivity() {
 
         val btnReagendar1: ImageButton = findViewById(R.id.btnReagendar1)
         btnReagendar1.setOnClickListener {
-            val intent = Intent(this,ScheduleActivity::class.java)
+            val intent = Intent(this,FilterActivity::class.java)
             startActivity(intent)
         }
 
